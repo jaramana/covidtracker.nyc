@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>COVID Tracker NYC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<link rel="stylesheet" href="./leaflet/leaflet.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+<link rel="stylesheet" href="./plugins/leaflet-sidebar.min.css">
+<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="./plugins/leaflet.groupedlayercontrol.css">
+<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+</head>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129520206-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129520206-3');
+</script>
+
+
+<body>
+<!-- partial:index.partial.html -->
+<div id="sidebar" class="leaflet-sidebar collapsed">
+    <!-- Nav tabs -->
+    <div class="leaflet-sidebar-tabs">
+        <ul role="tablist"> <!-- top aligned tabs -->
+   	  <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+	  <li><a href="#profile" role="tab"><i class="fa fa-info-circle"></i></a></li>
+	  <li><a href="#download" role="tab"><i class="fa fa-arrow-down"></i></a></li>
+        </ul>
+
+	<!-- bottom aligned tabs -->
+	<ul role="tablist">
+		<li><a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a></li>
+	</ul>
+    </div>
+
+  <!-- Tab panes -->
+  <div class="leaflet-sidebar-content">
+    <div class="leaflet-sidebar-pane" id="home">
+      <h1 class="leaflet-sidebar-header">
+        COVID Tracker NYC
+        <span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
+      </h1>
+		<br>
+	  <span id="layercontrol"></span>
+
+    </div>
+    <div class="leaflet-sidebar-pane" id="profile">
+      <h1 class="leaflet-sidebar-header">COVID Tracker NYC<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+	  <br>
+	  <h6>About</h6>
+	<p>COMING SOON</p>
+    </div>
+
+    <div class="leaflet-sidebar-pane" id="download">
+      <h1 class="leaflet-sidebar-header">COVID Tracker NYC<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+	  <br>
+	  <h6>Downloads</h6>
+	<p>COMING SOON</p>
+    </div>
+	
+  </div>
+</div>
+
+<div id="map"></div>
+
+<script class="popupTemplate_positive" type="x-tmpl-mustache">
+<center>
+  <div>
+  	<div><h6>{{zcta}}</h6></div>
+	<div><b>{{Positive}} Positive Cases ({{positiveperthou}} / 1000)</b></div>
+	<div><b>{{Total}} Total Cases ({{totalperthou}} / 1000)</b></div>
+	<br>
+	<div>Total Population: <b>{{P001001}}</b></div>
+  </div>
+  </center>
+</script>
+
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/leaflet-sidebar-v2@3.1.1/js/leaflet-sidebar.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.4/fetch.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+<script src="./plugins/leaflet.groupedlayercontrol.js"></script>
+<script src="./plugins/L.Control.Layers.Tree.js"></script>
+
+<script src="./data/covid_nyc.js"></script>
+
+
+<script src="./script.js"></script>
+
+  </body>
+</html>
