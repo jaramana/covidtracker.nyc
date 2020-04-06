@@ -655,3 +655,4 @@ $(".leaflet-control-layers-list").after("<p>Last Updated April 6, 2020 at 7:30pm
 
 
 var popupTemplate_positive = document.querySelector('.popupTemplate_positive').innerHTML;
+var popupTemplate_sdi = document.querySelector('.popupTemplate_sdi').innerHTML;
