@@ -60,7 +60,8 @@
       <h1 class="leaflet-sidebar-header">COVID Tracker NYC<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
 	  <br>
 	  <h6>About</h6>
-	<p>COMING SOON</p>
+	<p>This is still a work in progress. Indicators and layers are open for scrutiny, and can change. Please submit any comment to <a href = "mailto: ashaiban@pratt.edu">ashaiban@pratt.edu</a>, or fork the project at <a href = "https://github.com/jaramana/covid-tracker-nyc">Github</a>. This needs a lot of work, so any suggestions or tips is welcome and invited.</a></p>
+	<p>Stay safe.</p>
     </div>
 
     <div class="leaflet-sidebar-pane" id="download">
@@ -82,11 +83,30 @@
 	<div><b>{{Positive}} Positive Cases ({{positiveperthou}} / 1000)</b></div>
 	<div><b>{{Total}} Total Cases ({{totalperthou}} / 1000)</b></div>
 	<br>
-	<div>Total Population: <b>{{P001001}}</b></div>
+	<div>Total Population: <b>{{population}}</b></div>
   </div>
   </center>
 </script>
 
+
+<script class="popupTemplate_sdi" type="x-tmpl-mustache">
+<center>
+  <div>
+  	<div><h6>{{zcta}}</h6></div>
+	<div><b>Single Parent Household: {{percnt_singlparntfly}}%</b></div>
+	<div><b>Black / African-American: {{percnt_black}}%</b></div>
+	<div><b>High School Drop-out: {{percnt_dropout}}%</b></div>
+	<div><b>Single Parent Household: {{percnt_hhnocar}}%</b></div>
+	<div><b>Renter-Occupied: {{percnt_rentoccup}}%</b></div>
+	<div><b>Crowding: {{percnt_crowding}}%</b></div>
+	<div><b>Unemployed: {{percnt_unemp}}%</b></div>	
+	<div><b>Hispanic / Latin: {{percnt_hispanic}}%</b></div>
+	<div><b>Foreign born: {{percnt_frgnborn}}%</b></div>
+	<br>
+	<div>Total Population: <b>{{population}}</b></div>
+  </div>
+  </center>
+</script>
 
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
@@ -101,6 +121,8 @@
 <script src="./plugins/L.Control.Layers.Tree.js"></script>
 
 <script src="./data/covid_nyc.js"></script>
+
+<script src="./data/ACS2015_zctaallvars.js"></script>
 
 <script src="./script.js"></script>
 
