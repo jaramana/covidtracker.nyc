@@ -17,38 +17,38 @@ Promise.all([vzv_tcst])
   
 // get color depending on population density value
 function getColor_positive(d) {
-return d > 1000  ? '#67000d' :
-	   d > 500  ? '#a50f15' :
-	   d > 250  ? '#cb181d' :
-	   d > 100  ? '#ef3b2c' :
-	   d > 0   ? '#fb6a4a' :
+return d > 1000  ? '#b30000' :
+	   d > 500  ? '#e34a33' :
+	   d > 250  ? '#fc8d59' :
+	   d > 100  ? '#fdcc8a' :
+	   d > 0   ? '#fef0d9' :
 				  '#ffffff';
 }
 
 function getColor_positive_pc(d) {
-return d > 35  ? '#67000d' :
-	   d > 14  ? '#a50f15' :
-	   d > 11  ? '#cb181d' :
-	   d > 8  ? '#ef3b2c' :
-	   d > 0 ? '#fb6a4a' :
+return d > 35  ? '#b30000' :
+	   d > 14  ? '#e34a33' :
+	   d > 11  ? '#fc8d59' :
+	   d > 8  ? '#fdcc8a' :
+	   d > 0 ? '#fef0d9' :
 				  '#ffffff';
 }
 
 function getColor_total(d) {
-return d > 1000  ? '#3f007d' :
-	   d > 500  ? '#54278f' :
-	   d > 250  ? '#6a51a3' :
-	   d > 100  ? '#807dba' :
-	   d > 0   ? '#9e9ac8' :
+return d > 1000  ? '#08519c' :
+	   d > 500  ? '#3182bd' :
+	   d > 250  ? '#6baed6' :
+	   d > 100  ? '#bdd7e7' :
+	   d > 0   ? '#eff3ff' :
 				  '#ffffff';
 }
 
 function getColor_total_pc(d) {
-return d > 35  ? '#3f007d' :
-	   d > 14  ? '#54278f' :
-	   d > 11  ? '#6a51a3' :
-	   d > 8  ? '#807dba' :
-	   d > 0 ? '#9e9ac8' :
+return d > 35  ? '#08519c' :
+	   d > 14  ? '#3182bd' :
+	   d > 11  ? '#6baed6' :
+	   d > 8  ? '#bdd7e7' :
+	   d > 0 ? '#eff3ff' :
 				  '#ffffff';
 }
 
@@ -107,11 +107,6 @@ console.log(layer.feature.properties);
 return Mustache.render(popupTemplate_positive, layer.feature.properties);
 });	
 ///////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
 
 
 
@@ -287,7 +282,7 @@ var mapOptions = {
 	zoomControl: false, 
 	attributionControl: false, 
 	center: [40.715, -74.1],
-	zoom: 10,
+	zoom: 11,
 	minZoom: 9,
 	maxZoom: 19,
 };
@@ -435,6 +430,21 @@ map.on('baselayerchange', function (eventLayer) {
     }
   })
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
 
 
@@ -444,9 +454,6 @@ var underlays = {
 	"Total tests": total,
 	"Total tests per one thousand": total_pc,
 };
-
-
-
 
 
  var sidebar = L.control.sidebar({

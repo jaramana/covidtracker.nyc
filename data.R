@@ -51,7 +51,7 @@ m$totalperthou <- as.numeric(m$totalperthou)
 m <- spTransform(m, CRS("+proj=longlat +datum=WGS84 +init=epsg:4269"))
 
 ##Write as GeoJSON
-writeOGR(m, "data/covid_nyc.geojson", layer="merged", driver="GeoJSON", overwrite_layer=TRUE)
+writeOGR(m, "data/covid_nyc_test.js", layer="merged", driver="GeoJSON", overwrite_layer=TRUE)
 
 
 
