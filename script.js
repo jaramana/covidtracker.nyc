@@ -33,10 +33,10 @@ return d > 96  ? '#ffcc00' :
 
 // get color depending on population density value
 function getColor_positive(d) {
-return d >= 469  ? '#b30000' :
-	   d >= 278  ? '#e34a33' :
-	   d >= 177  ? '#fc8d59' :
-	   d >= 29  ? '#fdcc8a' :
+return d > 469  ? '#b30000' :
+	   d > 278  ? '#e34a33' :
+	   d > 177  ? '#fc8d59' :
+	   d > 29  ? '#fdcc8a' :
 	   d > 0   ? '#fef0d9' :
 				  '#ffffff';
 }
@@ -67,11 +67,11 @@ legend_positive.onAdd = function (map) {
 
 
 function getColor_positive_pc(d) {
-return d >= 8  ? '#b30000' :
-	   d >= 7  ? '#e34a33' :
-	   d >= 5  ? '#fc8d59' :
-	   d >= 4  ? '#fdcc8a' :
-	   d >= 0 ? '#fef0d9' :
+return d > 8  ? '#b30000' :
+	   d > 7  ? '#e34a33' :
+	   d > 5  ? '#fc8d59' :
+	   d > 4  ? '#fdcc8a' :
+	   d > 0 ? '#fef0d9' :
 				  '#ffffff';
 }
 
@@ -101,10 +101,10 @@ legend_positive_pc.onAdd = function (map) {
 
 
 function getColor_total(d) {
-return d >= 874  ? '#08519c' :
-	   d >= 539  ? '#3182bd' :
-	   d >= 351  ? '#6baed6' :
-	   d >= 77  ? '#bdd7e7' :
+return d > 874  ? '#08519c' :
+	   d > 539  ? '#3182bd' :
+	   d > 351  ? '#6baed6' :
+	   d > 77  ? '#bdd7e7' :
 	   d > 0   ? '#eff3ff' :
 				  '#ffffff';
 }
@@ -115,7 +115,7 @@ legend_total.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
 		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Total tests</h6>'],
 		grades = [999999, 874, 539, 351, 77, 0],
-        labels = ["874 +", "539 - 873", "351 - 538", "77 - 350", "1 - 76", "No Positives/Data"]
+        labels = ["874 +", "539 - 873", "351 - 538", "77 - 350", "1 - 76", "No Tests/Data"]
 		;
 		
     // loop through our density intervals and generate a label with a colored square for each interval
@@ -135,10 +135,10 @@ legend_total.onAdd = function (map) {
 
 
 function getColor_total_pc(d) {
-return d >= 16  ? '#08519c' :
-	   d >= 13  ? '#3182bd' :
-	   d >= 11  ? '#6baed6' :
-	   d >= 8  ? '#bdd7e7' :
+return d > 16  ? '#08519c' :
+	   d > 13  ? '#3182bd' :
+	   d > 11  ? '#6baed6' :
+	   d > 8  ? '#bdd7e7' :
 	   d > 0 ? '#eff3ff' :
 				  '#ffffff';
 }
@@ -149,7 +149,7 @@ legend_total_pc.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
 		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Total tests<br>per one thousand</h6>'],
 		grades = [999999, 16, 13, 11, 8, 0],
-        labels = ["16 +", "13 - 15.9", "11 - 12.9", "8 - 10.9", "1 - 7.9", "No Positives/Data"]
+        labels = ["16 +", "13 - 15.9", "11 - 12.9", "8 - 10.9", "1 - 7.9", "No Tests/Data"]
 		;
 		
     // loop through our density intervals and generate a label with a colored square for each interval
@@ -182,7 +182,7 @@ var legend_sdi = L.control({ position: "bottomright" });
 legend_sdi.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
-		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Social Deprivation Index <br>Score</h6>'],
+		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Social Deprivation Index<br>Score</h6>'],
 		grades = [999999, 96, 84, 70, 41, 6, 0],
         labels = ["96 +", "84 - 95.9", "70 - 83.9", "41 - 69.9", "6 - 40.9", "0 - 6", "No Data"]
 		;
@@ -239,7 +239,7 @@ var positive;
       });
     }
 
-    positive = L.geoJson(ACS_17_5YR_S0801_MT, {
+    positive = L.geoJson(covid_nyc, {
       style: style_positive,
       onEachFeature: onEachFeature_positive
 
@@ -296,7 +296,7 @@ var positive_pc;
       });
     }
 
-    positive_pc = L.geoJson(ACS_17_5YR_S0801_MT, {
+    positive_pc = L.geoJson(covid_nyc, {
       style: style_positive_pc,
       onEachFeature: onEachFeature_positive_pc
 
@@ -352,7 +352,7 @@ var total;
         mouseout: resetHighlight_total
       });
     }
-    total = L.geoJson(ACS_17_5YR_S0801_MT, {
+    total = L.geoJson(covid_nyc, {
       style: style_total,
       onEachFeature: onEachFeature_total
     });
@@ -407,7 +407,7 @@ var total_pc;
         mouseout: resetHighlight_total_pc
       });
     }
-    total_pc = L.geoJson(ACS_17_5YR_S0801_MT, {
+    total_pc = L.geoJson(covid_nyc, {
       style: style_total_pc,
       onEachFeature: onEachFeature_total_pc
     });
@@ -649,7 +649,7 @@ var layerControl = L.control.layers(underlays, overlays, {position: "topright",c
 var oldLayerControl = layerControl.getContainer();
 var newLayerControl = $("#layercontrol");
 newLayerControl.append(oldLayerControl);
-$(".leaflet-control-layers-list").after("<p>Last Updated April 6, 2020 at 7:30pm.</p>");
+$(".leaflet-control-layers-list").after("More layers coming soon...");
   });
 
 

@@ -54,13 +54,16 @@
       </h1>
 		<br>
 	  <span id="layercontrol"></span>
-
+		<script language="Javascript">
+		document.write("<p style='text-align:center;color: #555;'>Last updated " + document.lastModified +"</p>");
+		</script>
     </div>
+	
     <div class="leaflet-sidebar-pane" id="profile">
       <h1 class="leaflet-sidebar-header">COVID Tracker NYC<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
 	  <br>
 	  <h6>About</h6>
-	<p>This is still a work in progress. Indicators and layers are open for scrutiny, and can change. Please submit any comment to <a href = "mailto: ashaiban@pratt.edu">ashaiban@pratt.edu</a>, or fork the project at <a href = "https://github.com/jaramana/covid-tracker-nyc">Github</a>. This needs a lot of work, so any suggestions or tips is welcome and invited.</a></p>
+	<p>This is still a work in progress. Indicators and layers are open for scrutiny, and can change. Please submit any comment to <a href = "mailto: ashaiban@pratt.edu" target="_blank">ashaiban@pratt.edu</a>, or fork the project at <a href = "https://github.com/jaramana/covid-tracker-nyc" target="_blank">GitHub</a>. This needs a lot of work, so any suggestions or tips is welcome and invited.</a></p>
 	<p>Stay safe.</p>
     </div>
 
@@ -68,7 +71,10 @@
       <h1 class="leaflet-sidebar-header">COVID Tracker NYC<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
 	  <br>
 	  <h6>Downloads</h6>
-	<p>COMING SOON</p>
+	  <p>Coming Soon...</p>
+	  <p>See <a href = "https://github.com/jaramana/covid-tracker-nyc" target="_blank">GitHub</a> for web map files.</p>
+	 
+
     </div>
 	
   </div>
@@ -93,15 +99,15 @@
 <center>
   <div>
   	<div><h6>{{zcta}}</h6></div>
-	<div><b>Single Parent Household: {{percnt_singlparntfly}}%</b></div>
-	<div><b>Black / African-American: {{percnt_black}}%</b></div>
-	<div><b>High School Drop-out: {{percnt_dropout}}%</b></div>
-	<div><b>Single Parent Household: {{percnt_hhnocar}}%</b></div>
-	<div><b>Renter-Occupied: {{percnt_rentoccup}}%</b></div>
-	<div><b>Crowding: {{percnt_crowding}}%</b></div>
-	<div><b>Unemployed: {{percnt_unemp}}%</b></div>	
-	<div><b>Hispanic / Latin: {{percnt_hispanic}}%</b></div>
-	<div><b>Foreign born: {{percnt_frgnborn}}%</b></div>
+	<div>Single Parent Household:<b> {{percnt_singlparntfly}}%</b></div>
+	<div>Black / African-American:<b> {{percnt_black}}%</b></div>
+	<div>High School Drop-out:<b> {{percnt_dropout}}%</b></div>
+	<div>Single Parent Household:<b> {{percnt_hhnocar}}%</b></div>
+	<div>Renter-Occupied:<b> {{percnt_rentoccup}}%</b></div>
+	<div>Crowding:<b> {{percnt_crowding}}%</b></div>
+	<div>Unemployed:<b> {{percnt_unemp}}%</b></div>	
+	<div>Hispanic / Latin:<b> {{percnt_hispanic}}%</b></div>
+	<div>Foreign born:<b> {{percnt_frgnborn}}%</b></div>
 	<br>
 	<div>Total Population: <b>{{population}}</b></div>
   </div>
