@@ -571,7 +571,7 @@ legend_SVI2018_overall.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
 		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Vulnerability</h6>'],
 		grades = [999999, 10, 9.9, 8.5, 7.5, 6, 0],
-        labels = ["Extreme", "Very", "Vulnerable", "Low", "Very Low", "0 - 6", "No Data"]
+        labels = ["Most", "Very High", "Moderate", "Low", "Very Low", "Least", "No Data"]
 		;
 		
     // loop through our density intervals and generate a label with a colored square for each interval
