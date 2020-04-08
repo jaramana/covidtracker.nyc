@@ -28,9 +28,6 @@ return d > 96  ? '#ffcc00' :
 
 
 
-
-
-
 // get color depending on population density value
 function getColor_positive(d) {
 return d > 469  ? '#b30000' :
@@ -203,6 +200,47 @@ legend_sdi.onAdd = function (map) {
 
 
 
+
+function getColor_sdi(d) {
+return d > 96  ? '#d73027' :
+	   d > 84  ? '#fc8d59' :
+	   d > 70  ? '#fee08b' :
+	   d > 41  ? '#d9ef8b' :
+	   d > 6  ? '#91cf60' :
+	   d > 0 ? '#1a9850' :
+				  '#ffffff';
+}
+
+var legend_sdi = L.control({ position: "bottomright" });
+legend_sdi.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Social Deprivation Index<br>Score</h6>'],
+		grades = [999999, 96, 84, 70, 41, 6, 0],
+        labels = ["96 +", "84 - 95.9", "70 - 83.9", "41 - 69.9", "6 - 40.9", "0 - 6", "No Data"]
+		;
+		
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            labels_title.push(
+            '<i style="background:' + getColor_sdi(grades[i]) + '"></i> ' +
+            (labels[i] ? labels[i] + '<br>' : '+'));
+        div.innerHTML = labels_title.join('');
+    }
+    return div;
+};
+
+
+
+
+
+
+
+
+
+
+
 ///////////////////////////////////////////////////////////////////////////////////
     function style_positive(feature) {
       return {
@@ -221,7 +259,7 @@ legend_sdi.onAdd = function (map) {
         dashArray: "",
         fillOpacity: 1,
       });
-	  	vzcta.bringToFront();		
+	  	//vzcta.bringToFront();		
 
       if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
         layer.bringToFront();
@@ -279,7 +317,7 @@ return Mustache.render(popupTemplate_positive, layer.feature.properties);
         dashArray: "",
         fillOpacity: 1
       });
-	  	  	vzcta.bringToFront();		
+	  	  //	vzcta.bringToFront();		
       if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
         layer.bringToFront();
       }
@@ -336,7 +374,7 @@ return Mustache.render(popupTemplate_positive, layer.feature.properties);
         dashArray: "",
         fillOpacity: 1
       });
-	  	  	vzcta.bringToFront();		
+	  	  //	vzcta.bringToFront();		
       if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
         layer.bringToFront();
       }
@@ -391,7 +429,7 @@ return Mustache.render(popupTemplate_positive, layer.feature.properties);
         dashArray: "",
         fillOpacity: 1
       });
-	  	  	vzcta.bringToFront();		
+	  	//  	vzcta.bringToFront();		
       if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
         layer.bringToFront();
       }
@@ -428,7 +466,7 @@ return Mustache.render(popupTemplate_positive, layer.feature.properties);
 
 
 
-
+/*/
 
 
 
@@ -511,6 +549,474 @@ return Mustache.render(popupTemplate_positive, layer.feature.properties);
 });
 ///////////////////////////////////////////////////////////////////////////////////
 
+/*/
+
+
+
+///////////////////////////////////////////////////////////////////////////////////
+
+function getColor_SVI2018_overall(d) {
+return d > 10  ? '#d7191c' :
+	   d > 9.9  ? '#ea633e' :
+	   d > 8.5  ? '#fdae61' :
+	   d > 7.5  ? '#fed791' :
+	   d > 6  ? '#ffffc0' :
+	   d > 0 ? '#d3ec95' :
+				  '#ffffff00';
+}
+
+var legend_SVI2018_overall = L.control({ position: "bottomright" });
+legend_SVI2018_overall.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Vulnerability</h6>'],
+		grades = [999999, 10, 9.9, 8.5, 7.5, 6, 0],
+        labels = ["Extreme", "Very", "Vulnerable", "Low", "Very Low", "0 - 6", "No Data"]
+		;
+		
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            labels_title.push(
+            '<i style="background:' + getColor_SVI2018_overall(grades[i]) + '"></i> ' +
+            (labels[i] ? labels[i] + '<br>' : '+'));
+        div.innerHTML = labels_title.join('');
+    }
+    return div;
+};
+
+
+
+
+
+
+
+    function style_SVI2018_overall(feature) {
+      return {
+        weight: 1,
+        opacity: .25,
+        color: getColor_SVI2018_overall(feature.properties.SPL_THEMES),
+        fillOpacity: .7,
+ 		fillColor: getColor_SVI2018_overall(feature.properties.SPL_THEMES),
+      };
+    }
+   
+    function highlightFeature_SVI2018_overall(e) {
+      var layer = e.target;
+      layer.setStyle({
+        weight: 1,
+        color: "#777",
+        dashArray: "",
+        fillOpacity: 1
+      });
+	  	  //	vzcta.bringToFront();		
+      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+      }
+    }
+var SVI2018_overall;
+    function resetHighlight_SVI2018_overall(e) {
+      SVI2018_overall.resetStyle(e.target);
+    }
+
+    function onEachFeature_SVI2018_overall(feature, layer) {
+      layer.on({
+        mouseover: highlightFeature_SVI2018_overall,
+        mouseout: resetHighlight_SVI2018_overall
+      });
+    }
+    SVI2018_overall = L.geoJson(SVI2018_NEWYORK_tract_nyc_mod, {
+      style: style_SVI2018_overall,
+	  interactive: false
+      //onEachFeature: onEachFeature_SVI2018_overall
+    });
+// Add popups to the layer
+SVI2018_overall.bindPopup(function (layer) {
+// This function is called whenever a feature on the layer is clicked
+console.log(layer.feature.properties);
+
+// Render the template with all of the properties. Mustache ignores properties
+// that aren't used in the template, so this is fine.
+return Mustache.render(popupTemplate_SVI2018_overall, layer.feature.properties);
+});
+///////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////
+
+function getColor_SVI2018_theme1(d) {
+return d > 3.3  ? '#d7191c' :
+	   d > 2.8  ? '#ea633e' :
+	   d > 2.4  ? '#fdae61' :
+	   d > 1.9  ? '#fed791' :
+	   d > 1.3 ? '#ffffc0' :
+	   d > 0 ? '#d3ec95' :
+				  '#ffffff00';
+}
+
+var legend_SVI2018_theme1 = L.control({ position: "bottomright" });
+legend_SVI2018_theme1.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Vulnerability</h6>'],
+		grades = [999999, 3.3, 2.8, 2.4, 1.9, 1.3, 0],
+        labels = ["Most", "Very High", "Moderate", "Low", "Very Low", "Least", "No Data"]
+		;
+		
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            labels_title.push(
+            '<i style="background:' + getColor_SVI2018_theme1(grades[i]) + '"></i> ' +
+            (labels[i] ? labels[i] + '<br>' : '+'));
+        div.innerHTML = labels_title.join('');
+    }
+    return div;
+};
+
+
+
+
+
+
+
+    function style_SVI2018_theme1(feature) {
+      return {
+        weight: 1,
+        opacity: .25,
+        color: getColor_SVI2018_theme1(feature.properties.SPL_THEME1),
+        fillOpacity: .7,
+ 		fillColor: getColor_SVI2018_theme1(feature.properties.SPL_THEME1),
+      };
+    }
+   
+    function highlightFeature_SVI2018_theme1(e) {
+      var layer = e.target;
+      layer.setStyle({
+        weight: 1,
+        color: "#777",
+        dashArray: "",
+        fillOpacity: 1
+      });
+	  	  	//vzcta.bringToFront();		
+      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+      }
+    }
+var SVI2018_theme1;
+    function resetHighlight_SVI2018_theme1(e) {
+      SVI2018_theme1.resetStyle(e.target);
+    }
+
+    function onEachFeature_SVI2018_theme1(feature, layer) {
+      layer.on({
+        mouseover: highlightFeature_SVI2018_theme1,
+        mouseout: resetHighlight_SVI2018_theme1
+      });
+    }
+    SVI2018_theme1 = L.geoJson(SVI2018_NEWYORK_tract_nyc_mod, {
+      style: style_SVI2018_theme1,
+      onEachFeature: onEachFeature_SVI2018_theme1
+    });
+// Add popups to the layer
+SVI2018_theme1.bindPopup(function (layer) {
+// This function is called whenever a feature on the layer is clicked
+console.log(layer.feature.properties);
+
+// Render the template with all of the properties. Mustache ignores properties
+// that aren't used in the template, so this is fine.
+return Mustache.render(popupTemplate_SVI2018_theme1, layer.feature.properties);
+});
+///////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////
+
+function getColor_SVI2018_theme2(d) {
+return d > 2.5  ? '#d7191c' :
+	   d > 2.1 ? '#ea633e' :
+	   d > 1.9  ? '#fdae61' :
+	   d > 1.6  ? '#fed791' :
+	   d > 1.2 ? '#ffffc0' :
+	   d > 0 ? '#d3ec95' :
+				  '#ffffff00';
+}
+
+var legend_SVI2018_theme2 = L.control({ position: "bottomright" });
+legend_SVI2018_theme2.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Vulnerability</h6>'],
+		grades = [999999, 2.5, 2.1, 1.9, 1.6, 1.2, 0],
+        labels = ["Most", "Very High", "Moderate", "Low", "Very Low", "Least", "No Data"]
+		;
+		
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            labels_title.push(
+            '<i style="background:' + getColor_SVI2018_theme2(grades[i]) + '"></i> ' +
+            (labels[i] ? labels[i] + '<br>' : '+'));
+        div.innerHTML = labels_title.join('');
+    }
+    return div;
+};
+
+
+
+
+
+
+
+    function style_SVI2018_theme2(feature) {
+      return {
+        weight: 1,
+        opacity: .25,
+        color: getColor_SVI2018_theme2(feature.properties.SPL_THEME2),
+        fillOpacity: .7,
+ 		fillColor: getColor_SVI2018_theme2(feature.properties.SPL_THEME2),
+      };
+    }
+   
+    function highlightFeature_SVI2018_theme2(e) {
+      var layer = e.target;
+      layer.setStyle({
+        weight: 1,
+        color: "#777",
+        dashArray: "",
+        fillOpacity: 1
+      });
+	  	  	//vzcta.bringToFront();		
+      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+      }
+    }
+var SVI2018_theme2;
+    function resetHighlight_SVI2018_theme2(e) {
+      SVI2018_theme2.resetStyle(e.target);
+    }
+
+    function onEachFeature_SVI2018_theme2(feature, layer) {
+      layer.on({
+        mouseover: highlightFeature_SVI2018_theme2,
+        mouseout: resetHighlight_SVI2018_theme2
+      });
+    }
+    SVI2018_theme2 = L.geoJson(SVI2018_NEWYORK_tract_nyc_mod, {
+      style: style_SVI2018_theme2,
+      onEachFeature: onEachFeature_SVI2018_theme2
+    });
+// Add popups to the layer
+SVI2018_theme2.bindPopup(function (layer) {
+// This function is called whenever a feature on the layer is clicked
+console.log(layer.feature.properties);
+
+// Render the template with all of the properties. Mustache ignores properties
+// that aren't used in the template, so this is fine.
+return Mustache.render(popupTemplate_SVI2018_theme2, layer.feature.properties);
+});
+///////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////
+
+function getColor_SVI2018_theme3(d) {
+return d > 1.7  ? '#d7191c' :
+	   d > 1.6 ? '#ea633e' :
+	   d > 1.5  ? '#fdae61' :
+	   d > 1.3  ? '#fed791' :
+	   d > 1 ? '#ffffc0' :
+	   d > 0 ? '#d3ec95' :
+				  '#ffffff00';
+}
+
+var legend_SVI2018_theme3 = L.control({ position: "bottomright" });
+legend_SVI2018_theme3.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Vulnerability</h6>'],
+		grades = [999999, 1.7, 1.6, 1.5, 1.3, 1, 0],
+        labels = ["Most", "Very High", "Moderate", "Low", "Very Low", "Least", "No Data"]
+		;
+		
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            labels_title.push(
+            '<i style="background:' + getColor_SVI2018_theme3(grades[i]) + '"></i> ' +
+            (labels[i] ? labels[i] + '<br>' : '+'));
+        div.innerHTML = labels_title.join('');
+    }
+    return div;
+};
+
+
+
+
+
+
+
+    function style_SVI2018_theme3(feature) {
+      return {
+        weight: 1,
+        opacity: .25,
+        color: getColor_SVI2018_theme3(feature.properties.SPL_THEME3),
+        fillOpacity: .7,
+ 		fillColor: getColor_SVI2018_theme3(feature.properties.SPL_THEME3),
+      };
+    }
+   
+    function highlightFeature_SVI2018_theme3(e) {
+      var layer = e.target;
+      layer.setStyle({
+        weight: 1,
+        color: "#777",
+        dashArray: "",
+        fillOpacity: 1
+      });
+	  	  	//vzcta.bringToFront();		
+      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+      }
+    }
+var SVI2018_theme3;
+    function resetHighlight_SVI2018_theme3(e) {
+      SVI2018_theme3.resetStyle(e.target);
+    }
+
+    function onEachFeature_SVI2018_theme3(feature, layer) {
+      layer.on({
+        mouseover: highlightFeature_SVI2018_theme3,
+        mouseout: resetHighlight_SVI2018_theme3
+      });
+    }
+    SVI2018_theme3 = L.geoJson(SVI2018_NEWYORK_tract_nyc_mod, {
+      style: style_SVI2018_theme3,
+      onEachFeature: onEachFeature_SVI2018_theme3
+    });
+// Add popups to the layer
+SVI2018_theme3.bindPopup(function (layer) {
+// This function is called whenever a feature on the layer is clicked
+console.log(layer.feature.properties);
+
+// Render the template with all of the properties. Mustache ignores properties
+// that aren't used in the template, so this is fine.
+return Mustache.render(popupTemplate_SVI2018_theme3, layer.feature.properties);
+});
+///////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////
+
+function getColor_SVI2018_theme4(d) {
+return d > 3.2  ? '#d7191c' :
+	   d > 2.8 ? '#ea633e' :
+	   d > 2.6  ? '#fdae61' :
+	   d > 2.3  ? '#fed791' :
+	   d > 1.8 ? '#ffffc0' :
+	   d > 0 ? '#d3ec95' :
+				  '#ffffff00';
+}
+
+var legend_SVI2018_theme4 = L.control({ position: "bottomright" });
+legend_SVI2018_theme4.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Vulnerability</h6>'],
+		grades = [999999, 3.2, 2.8, 2.6, 2.3, 1.8, 0],
+        labels = ["Most", "Very High", "Moderate", "Low", "Very Low", "Least", "No Data"]
+		;
+		
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            labels_title.push(
+            '<i style="background:' + getColor_SVI2018_theme4(grades[i]) + '"></i> ' +
+            (labels[i] ? labels[i] + '<br>' : '+'));
+        div.innerHTML = labels_title.join('');
+    }
+    return div;
+};
+
+
+
+
+
+
+
+    function style_SVI2018_theme4(feature) {
+      return {
+        weight: 1,
+        opacity: .25,
+        color: getColor_SVI2018_theme4(feature.properties.SPL_THEME4),
+        fillOpacity: .7,
+ 		fillColor: getColor_SVI2018_theme4(feature.properties.SPL_THEME4),
+      };
+    }
+   
+    function highlightFeature_SVI2018_theme4(e) {
+      var layer = e.target;
+      layer.setStyle({
+        weight: 1,
+        color: "#777",
+        dashArray: "",
+        fillOpacity: 1
+      });
+	  	  	//vzcta.bringToFront();		
+      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+      }
+    }
+var SVI2018_theme4;
+    function resetHighlight_SVI2018_theme4(e) {
+      SVI2018_theme4.resetStyle(e.target);
+    }
+
+    function onEachFeature_SVI2018_theme4(feature, layer) {
+      layer.on({
+        mouseover: highlightFeature_SVI2018_theme4,
+        mouseout: resetHighlight_SVI2018_theme4
+      });
+    }
+    SVI2018_theme4 = L.geoJson(SVI2018_NEWYORK_tract_nyc_mod, {
+      style: style_SVI2018_theme4,
+      onEachFeature: onEachFeature_SVI2018_theme4
+    });
+// Add popups to the layer
+SVI2018_theme4.bindPopup(function (layer) {
+// This function is called whenever a feature on the layer is clicked
+console.log(layer.feature.properties);
+
+// Render the template with all of the properties. Mustache ignores properties
+// that aren't used in the template, so this is fine.
+return Mustache.render(popupTemplate_SVI2018_theme4, layer.feature.properties);
+});
+///////////////////////////////////////////////////////////////////////////////////
+
 
 
 
@@ -573,33 +1079,65 @@ map.on('baselayerchange', function (eventLayer) {
         map.removeControl(currentLegend );
         currentLegend = legend_positive;
         legend_positive.addTo(map);
-		vzcta.bringToFront();
+		//vzcta.bringToFront();
     }
     else if  (eventLayer.name === 'Positive cases per one thousand') {
         map.removeControl(currentLegend );
         currentLegend = legend_positive_pc;
         legend_positive_pc.addTo(map);	
-		vzcta.bringToFront();
+		//vzcta.bringToFront();
 
     }
     else if  (eventLayer.name === 'Total tests') {
        map.removeControl(currentLegend );
         currentLegend = legend_total;
         legend_total.addTo(map);
-		vzcta.bringToFront();		
+		//vzcta.bringToFront();		
     }
     else if  (eventLayer.name === 'Total tests per one thousand') {
        map.removeControl(currentLegend );
         currentLegend = legend_total_pc;
         legend_total_pc.addTo(map);
-		vzcta.bringToFront();
+		//vzcta.bringToFront();
     }
+    else if  (eventLayer.name === 'Overall Vulnerability') {
+       map.removeControl(currentLegend );
+        currentLegend = legend_SVI2018_overall;
+        legend_SVI2018_overall.addTo(map);
+		//vzcta.bringToFront();
+    }
+    else if  (eventLayer.name === 'Socioeconomic Vulnerability') {
+       map.removeControl(currentLegend );
+        currentLegend = legend_SVI2018_theme1;
+        legend_SVI2018_theme1.addTo(map);
+		//vzcta.bringToFront();
+    }
+    else if  (eventLayer.name === 'Household Composition & Disability Vulnerability') {
+       map.removeControl(currentLegend );
+        currentLegend = legend_SVI2018_theme2;
+        legend_SVI2018_theme2.addTo(map);
+		//vzcta.bringToFront();
+    }
+    else if  (eventLayer.name === 'Minority Status & Language Vulnerability') {
+       map.removeControl(currentLegend );
+        currentLegend = legend_SVI2018_theme3;
+        legend_SVI2018_theme3.addTo(map);
+		//vzcta.bringToFront();
+    }
+    else if  (eventLayer.name === 'Housing Type & Transportation Vulnerability') {
+       map.removeControl(currentLegend );
+        currentLegend = legend_SVI2018_theme4;
+        legend_SVI2018_theme4.addTo(map);
+		//vzcta.bringToFront();
+    }
+	/*/
     else if  (eventLayer.name === "Social Deprivation Index (<a href='https://www.graham-center.org/rgc/maps-data-tools/sdi/social-deprivation-index.html' target=_blank>?</a>)") {
        map.removeControl(currentLegend );
         currentLegend = legend_sdi;
         legend_sdi.addTo(map);
 		vzcta.bringToFront();
     }
+	/*/
   })
   
   
@@ -624,12 +1162,17 @@ var underlays = {
 	"Positive cases": positive,
 	"Positive cases per one thousand": positive_pc,
 	"Total tests": total,
-	"Total tests per one thousand": total_pc,
-	"Social Deprivation Index (<a href='https://www.graham-center.org/rgc/maps-data-tools/sdi/social-deprivation-index.html' target=_blank>?</a>)": sdi,
+	"Total tests per one thousand<br><br><b>CDC Social Vulnerability Index (<a href='https://svi.cdc.gov/index.html' target=_blank>?</a>)</b>": total_pc,
+//	"Social Deprivation Index (<a href='https://www.graham-center.org/rgc/maps-data-tools/sdi/social-deprivation-index.html' target=_blank>?</a>)": sdi,
+	"Overall Vulnerability": SVI2018_overall,
+	"Socioeconomic Vulnerability": SVI2018_theme1,
+	"Household Composition & Disability Vulnerability": SVI2018_theme2,
+	"Minority Status & Language Vulnerability": SVI2018_theme3,
+	"Housing Type & Transportation Vulnerability": SVI2018_theme4,
 };
 
 var overlays = {
-	"Vulnerable Zip Codes": vzcta,
+//	"Vulnerable Zip Codes": vzcta,
 };
 
 
@@ -649,10 +1192,17 @@ var layerControl = L.control.layers(underlays, overlays, {position: "topright",c
 var oldLayerControl = layerControl.getContainer();
 var newLayerControl = $("#layercontrol");
 newLayerControl.append(oldLayerControl);
-$(".leaflet-control-layers-list").after("More layers coming soon...");
+//$(".leaflet-control-layers-list").after("More layers coming soon...");
   });
 
 
 
 var popupTemplate_positive = document.querySelector('.popupTemplate_positive').innerHTML;
-var popupTemplate_sdi = document.querySelector('.popupTemplate_sdi').innerHTML;
+//var popupTemplate_sdi = document.querySelector('.popupTemplate_sdi').innerHTML;
+var popupTemplate_SVI2018_theme1 = document.querySelector('.popupTemplate_SVI2018_theme1').innerHTML;
+var popupTemplate_SVI2018_theme2 = document.querySelector('.popupTemplate_SVI2018_theme2').innerHTML;
+var popupTemplate_SVI2018_theme3 = document.querySelector('.popupTemplate_SVI2018_theme3').innerHTML;
+var popupTemplate_SVI2018_theme4 = document.querySelector('.popupTemplate_SVI2018_theme4').innerHTML;
+
+
+

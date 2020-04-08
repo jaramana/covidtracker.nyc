@@ -55,7 +55,7 @@
 		<br>
 	  <span id="layercontrol"></span>
 		<script language="Javascript">
-		document.write("<p style='text-align:center;color: #555;'>Last updated " + document.lastModified +"</p>");
+		document.write("<p style='text-align:left;color: #555; padding-left: 10px;'>Last updated " + document.lastModified +"</p>");
 		</script>
     </div>
 	
@@ -115,6 +115,77 @@
 </script>
 
 
+
+
+
+
+
+
+
+<script class="popupTemplate_SVI2018_theme1" type="x-tmpl-mustache">
+<center>
+  <div>
+   	<div><h6>Socioeconomic</h6></div>
+	<div>Persons below poverty:<b> {{EP_POV}}%</b></div>
+	<div>Unemployment rate:<b> {{EP_UNEMP}}%</b></div>
+	<div>Per capita income:<b> ${{EP_PCI}}</b></div>
+	<div>No high school diploma (age 25+):<b> {{EP_NOHSDP}}%</b></div>
+	<br>
+	<div>Total Population: <b>{{E_TOTPOP}}</b></div>
+  </div>
+  </center>
+</script>
+
+
+
+
+<script class="popupTemplate_SVI2018_theme2" type="x-tmpl-mustache">
+<center>
+  <div>
+   	<div><h6>Household Composition & Disability</h6></div>
+	<div>Persons aged 65 and older:<b> {{EP_AGE65}}%</b></div>
+	<div>Persons aged 17 and younger:<b> {{EP_AGE17}}%</b></div>
+	<div>Persons with a disability:<b> {{EP_DISABL}}%</b></div>
+	<div>Single parent households:<b> {{EP_SNGPNT}}%</b></div>
+	<br>
+	<div>Total Population: <b>{{E_TOTPOP}}</b></div>
+  </div>
+  </center>
+</script>
+
+
+
+<script class="popupTemplate_SVI2018_theme3" type="x-tmpl-mustache">
+<center>
+  <div>
+   	<div><h6>Minority Status & Language</h6></div>
+	<div>Minority:<b> {{EP_MINRTY}}%</b></div>
+	<div>Persons who speak English "less than well":<b> {{EP_LIMENG}}%</b></div>
+	<br>
+	<div>Total Population: <b>{{E_TOTPOP}}</b></div>
+  </div>
+  </center>
+</script>
+
+
+
+<script class="popupTemplate_SVI2018_theme4" type="x-tmpl-mustache">
+<center>
+  <div>
+   	<div><h6>Housing Type & Transportation</h6></div>
+	<div>Housing structures with 10 or more units:<b> {{EP_MUNIT}}%</b></div>
+	<div>Mobile homes:<b> {{EP_MOBILE}}%</b></div>
+	<div>Housing with more people than rooms:<b> ${{EP_CROWD}}</b></div>
+	<div>No vehicle:<b> {{EP_NOVEH}}%</b></div>
+	<div>Institutionalized group quarters:<b> {{EP_GROUPQ}}%</b></div>
+	<br>
+	<div>Total Population: <b>{{E_TOTPOP}}</b></div>
+  </div>
+  </center>
+</script>
+
+
+
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js'></script>
@@ -129,6 +200,8 @@
 <script src="./data/covid_nyc.js"></script>
 
 <script src="./data/ACS2015_zctaallvars.js"></script>
+
+<script src="./data/SVI2018_NEWYORK_tract_nyc_mod.js"></script>
 
 <script src="./script.js"></script>
 
