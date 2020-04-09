@@ -11,4 +11,4 @@ This is still a work in progress. Indicators, layers, and methodology are open f
 https://covidtracker.nyc/
 
 ## License
-covid-tracker-nyc is released under a [Creative Commons Attribution 4.0 International License].(https://creativecommons.org/licenses/by/4.0/).
+covid-tracker-nyc is released under a [Creative Commons Attribution 4.0 International License] (https://creativecommons.org/licenses/by/4.0/).
