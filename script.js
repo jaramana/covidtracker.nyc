@@ -580,7 +580,7 @@ legend_SVI2018_overall.onAdd = function (map) {
             labels_title.push(
             '<i style="background:' + getColor_SVI2018_overall(grades[i]) + '"></i> ' +
             (labels[i] ? labels[i] + '<br>' : '+'));
-        div.innerHTML = labels_title.join('');
+        div.innerHTML = labels_title.join('<p>');
     }
     return div;
 };
@@ -671,7 +671,7 @@ legend_SVI2018_theme1.onAdd = function (map) {
             labels_title.push(
             '<i style="background:' + getColor_SVI2018_theme1(grades[i]) + '"></i> ' +
             (labels[i] ? labels[i] + '<br>' : '+'));
-        div.innerHTML = labels_title.join('');
+        div.innerHTML = labels_title.join('<p>');
     }
     return div;
 };
@@ -863,7 +863,7 @@ legend_SVI2018_theme3.onAdd = function (map) {
             labels_title.push(
             '<i style="background:' + getColor_SVI2018_theme3(grades[i]) + '"></i> ' +
             (labels[i] ? labels[i] + '<br>' : '+'));
-        div.innerHTML = labels_title.join('');
+        div.innerHTML = labels_title.join('<p>');
     }
     return div;
 };
@@ -957,7 +957,7 @@ legend_SVI2018_theme4.onAdd = function (map) {
             labels_title.push(
             '<i style="background:' + getColor_SVI2018_theme4(grades[i]) + '"></i> ' +
             (labels[i] ? labels[i] + '<br>' : '+'));
-        div.innerHTML = labels_title.join('');
+        div.innerHTML = labels_title.join('<p>');
     }
     return div;
 };
