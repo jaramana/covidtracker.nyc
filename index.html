@@ -16,6 +16,8 @@
 
 </head>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129520206-3"></script>
@@ -36,7 +38,9 @@
         <ul role="tablist"> <!-- top aligned tabs -->
    	  <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
 	  <li><a href="#profile" role="tab"><i class="fa fa-info-circle"></i></a></li>
+	  <li><a href="#charts" role="tab"><i class="fa fa-chart-line" aria-hidden="true"></i></a></li>
 	  <li><a href="#download" role="tab"><i class="fa fa-arrow-down"></i></a></li>
+
         </ul>
 
 	<!-- bottom aligned tabs -->
@@ -69,15 +73,72 @@
 	<p>Stay safe.</p>
     </div>
 
+
+
+
+
+
+
+	
+	    <div class="leaflet-sidebar-pane" id="charts">
+      <h1 class="leaflet-sidebar-header">COVID Tracker NYC<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+	  <br>
+	  <h6>Charts</h6>
+	  <br>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+
+		    <div class="wrapper">
+      <canvas id="case_hosp_death" height="300px"></canvas>
+    </div>
+<br>
+    <div class="wrapper">
+      <canvas id="death_count"></canvas>
+    </div>
+	<br>
+	    <div class="wrapper">
+      <canvas id="hospitalized"></canvas>
+	  <br>
+    </div>
+		    <div class="wrapper">
+      <canvas id="case_count"></canvas>
+    </div>
+	<br>
+	  
+	  
+	  
+	  
+
+
+    </div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
     <div class="leaflet-sidebar-pane" id="download">
       <h1 class="leaflet-sidebar-header">COVID Tracker NYC<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
 	  <br>
-	  <h6>Downloads</h6>
+	  <h6>Downloads</h6>	  
+	  
 	  <p>Coming Soon...</p>
 	  <p>See <a href = "https://github.com/jaramana/covid-tracker-nyc" target="_blank">GitHub</a> for web map files.</p>
 	 
 
     </div>
+	
+	
+	
 	
   </div>
 </div>
@@ -206,6 +267,14 @@
 <script src="./data/SVI2018_NEWYORK_tract_nyc_mod.js"></script>
 
 <script src="./script.js"></script>
+
+
+	<script src="./charts/case-hosp-death_cumulative.js"></script>
+
+    <script src="./charts/death_count.js"></script>
+	<script src="./charts/hospitalized.js"></script>
+	<script src="./charts/case_count.js"></script>
+	<script src="./charts/all.js"></script>
 
   </body>
 </html>

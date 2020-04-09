@@ -52,8 +52,8 @@ legend_positive.onAdd = function (map) {
         div.innerHTML +=
             labels_title.push(
             '<i style="background:' + getColor_positive(grades[i]) + '"></i> ' +
-            (labels[i] ? labels[i] + '<br>' : '+'));
-        div.innerHTML = labels_title.join('<p>');
+            (labels[i] ? labels[i] + '<p>' : '+'));
+			div.innerHTML = labels_title.join('<p>');
     }
     return div;
 };
@@ -86,7 +86,7 @@ legend_positive_pc.onAdd = function (map) {
         div.innerHTML +=
             labels_title.push(
             '<i style="background:' + getColor_positive_pc(grades[i]) + '"></i> ' +
-            (labels[i] ? labels[i] + '<br>' : '+'));
+            (labels[i] ? labels[i] + '<p>' : '+'));
         div.innerHTML = labels_title.join('<p>');
     }
     return div;
@@ -120,7 +120,7 @@ legend_total.onAdd = function (map) {
         div.innerHTML +=
             labels_title.push(
             '<i style="background:' + getColor_total(grades[i]) + '"></i> ' +
-            (labels[i] ? labels[i] + '<br>' : '+'));
+            (labels[i] ? labels[i] + '<p>' : '+'));
         div.innerHTML = labels_title.join('<p>');
     }
     return div;
@@ -154,7 +154,7 @@ legend_total_pc.onAdd = function (map) {
         div.innerHTML +=
             labels_title.push(
             '<i style="background:' + getColor_total_pc(grades[i]) + '"></i> ' +
-            (labels[i] ? labels[i] + '<br>' : '+'));
+            (labels[i] ? labels[i] + '<p>' : '+'));
         div.innerHTML = labels_title.join('<p>');
     }
     return div;
@@ -189,7 +189,7 @@ legend_sdi.onAdd = function (map) {
         div.innerHTML +=
             labels_title.push(
             '<i style="background:' + getColor_sdi(grades[i]) + '"></i> ' +
-            (labels[i] ? labels[i] + '<br>' : '+'));
+            (labels[i] ? labels[i] + '<p>' : '+'));
         div.innerHTML = labels_title.join('<p>');
     }
     return div;
@@ -225,7 +225,7 @@ legend_sdi.onAdd = function (map) {
         div.innerHTML +=
             labels_title.push(
             '<i style="background:' + getColor_sdi(grades[i]) + '"></i> ' +
-            (labels[i] ? labels[i] + '<br>' : '+'));
+            (labels[i] ? labels[i] + '<p>' : '+'));
         div.innerHTML = labels_title.join('<p>');
     }
     return div;
@@ -579,7 +579,7 @@ legend_SVI2018_overall.onAdd = function (map) {
         div.innerHTML +=
             labels_title.push(
             '<i style="background:' + getColor_SVI2018_overall(grades[i]) + '"></i> ' +
-            (labels[i] ? labels[i] + '<br>' : '+'));
+            (labels[i] ? labels[i] + '<p>' : '+'));
         div.innerHTML = labels_title.join('<p>');
     }
     return div;
@@ -670,7 +670,7 @@ legend_SVI2018_theme1.onAdd = function (map) {
         div.innerHTML +=
             labels_title.push(
             '<i style="background:' + getColor_SVI2018_theme1(grades[i]) + '"></i> ' +
-            (labels[i] ? labels[i] + '<br>' : '+'));
+            (labels[i] ? labels[i] + '<p>' : '+'));
         div.innerHTML = labels_title.join('<p>');
     }
     return div;
@@ -764,7 +764,7 @@ legend_SVI2018_theme2.onAdd = function (map) {
         div.innerHTML +=
             labels_title.push(
             '<i style="background:' + getColor_SVI2018_theme2(grades[i]) + '"></i> ' +
-            (labels[i] ? labels[i] + '<br>' : '+'));
+            (labels[i] ? labels[i] + '<p>' : '+'));
         div.innerHTML = labels_title.join('<p>');
     }
     return div;
@@ -862,7 +862,7 @@ legend_SVI2018_theme3.onAdd = function (map) {
         div.innerHTML +=
             labels_title.push(
             '<i style="background:' + getColor_SVI2018_theme3(grades[i]) + '"></i> ' +
-            (labels[i] ? labels[i] + '<br>' : '+'));
+            (labels[i] ? labels[i] + '<p>' : '+'));
         div.innerHTML = labels_title.join('<p>');
     }
     return div;
@@ -956,7 +956,7 @@ legend_SVI2018_theme4.onAdd = function (map) {
         div.innerHTML +=
             labels_title.push(
             '<i style="background:' + getColor_SVI2018_theme4(grades[i]) + '"></i> ' +
-            (labels[i] ? labels[i] + '<br>' : '+'));
+            (labels[i] ? labels[i] + '<p>' : '+'));
         div.innerHTML = labels_title.join('<p>');
     }
     return div;

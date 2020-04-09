@@ -3,10 +3,15 @@ library(raster)
 library(rgdal)
 library(tidyverse)
 library(dplyr)
-library (readr)
+library(readr)
+library(jsonlite)
 
 ##Set working directory
 setwd("C:/Users/jaramana/Desktop/COVID Tracker NYC")
+
+
+
+##Spatial Visualization--
 
 ##Link to DOHMH Github Data
 urlfile="https://raw.githubusercontent.com/nychealth/coronavirus-data/master/tests-by-zcta.csv"
@@ -52,11 +57,30 @@ m <- spTransform(m, CRS("+proj=longlat +datum=WGS84 +init=epsg:4269"))
 ##Write as GeoJSON
 writeOGR(m, "data/covid_nyc.js", layer="merged", driver="GeoJSON", overwrite_layer=TRUE)
 
-
-
-
-##addendum
 ##Get quantiles for breaks / legend
 quantile(m$Positive, probs = seq(0, 1, .20))
 
+
+
+##Chart--
+
+##Link to DOHMH Github Data
+urlfile="https://raw.githubusercontent.com/nychealth/coronavirus-data/master/case-hosp-death.csv"
+
+##Load data
+d <- read_csv(url(urlfile))
+
+##Change NA to 0
+d[is.na(d)] <- 0
+
+##Create new columns with cumulative sums
+d[,"NEW_COVID_CASE_COUNT_CUM"] <- cumsum(d$NEW_COVID_CASE_COUNT)
+d[,"HOSPITALIZED_CASE_COUNT_CUM"] <- cumsum(d$HOSPITALIZED_CASE_COUNT)
+d[,"DEATH_COUNT_CUM"] <- cumsum(d$DEATH_COUNT)
+
+##Write as json
+write_json(d, "data/case-hosp-death_cumulative.json", pretty = TRUE)
+
+##Write as csv for public use
+write.csv(d, "data/case-hosp-death_cumulative.csv", row.names = FALSE)
 
