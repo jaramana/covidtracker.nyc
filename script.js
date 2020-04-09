@@ -53,7 +53,7 @@ legend_positive.onAdd = function (map) {
             labels_title.push(
             '<i style="background:' + getColor_positive(grades[i]) + '"></i> ' +
             (labels[i] ? labels[i] + '<br>' : '+'));
-        div.innerHTML = labels_title.join('');
+        div.innerHTML = labels_title.join('<p>');
     }
     return div;
 };
@@ -87,7 +87,7 @@ legend_positive_pc.onAdd = function (map) {
             labels_title.push(
             '<i style="background:' + getColor_positive_pc(grades[i]) + '"></i> ' +
             (labels[i] ? labels[i] + '<br>' : '+'));
-        div.innerHTML = labels_title.join('');
+        div.innerHTML = labels_title.join('<p>');
     }
     return div;
 };
@@ -121,7 +121,7 @@ legend_total.onAdd = function (map) {
             labels_title.push(
             '<i style="background:' + getColor_total(grades[i]) + '"></i> ' +
             (labels[i] ? labels[i] + '<br>' : '+'));
-        div.innerHTML = labels_title.join('');
+        div.innerHTML = labels_title.join('<p>');
     }
     return div;
 };
@@ -155,7 +155,7 @@ legend_total_pc.onAdd = function (map) {
             labels_title.push(
             '<i style="background:' + getColor_total_pc(grades[i]) + '"></i> ' +
             (labels[i] ? labels[i] + '<br>' : '+'));
-        div.innerHTML = labels_title.join('');
+        div.innerHTML = labels_title.join('<p>');
     }
     return div;
 };
@@ -190,7 +190,7 @@ legend_sdi.onAdd = function (map) {
             labels_title.push(
             '<i style="background:' + getColor_sdi(grades[i]) + '"></i> ' +
             (labels[i] ? labels[i] + '<br>' : '+'));
-        div.innerHTML = labels_title.join('');
+        div.innerHTML = labels_title.join('<p>');
     }
     return div;
 };
@@ -226,7 +226,7 @@ legend_sdi.onAdd = function (map) {
             labels_title.push(
             '<i style="background:' + getColor_sdi(grades[i]) + '"></i> ' +
             (labels[i] ? labels[i] + '<br>' : '+'));
-        div.innerHTML = labels_title.join('');
+        div.innerHTML = labels_title.join('<p>');
     }
     return div;
 };
