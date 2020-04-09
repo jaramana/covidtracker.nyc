@@ -765,7 +765,7 @@ legend_SVI2018_theme2.onAdd = function (map) {
             labels_title.push(
             '<i style="background:' + getColor_SVI2018_theme2(grades[i]) + '"></i> ' +
             (labels[i] ? labels[i] + '<br>' : '+'));
-        div.innerHTML = labels_title.join('');
+        div.innerHTML = labels_title.join('<p>');
     }
     return div;
 };
