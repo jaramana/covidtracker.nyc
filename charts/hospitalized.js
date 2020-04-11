@@ -13,12 +13,33 @@ var data2 = case_hosp_death_cumulative.jsonarray.map(function(e) {
 var ctx = hospitalized.getContext('2d');
 var config = {
    type: 'bar',
+   options: {
+        legend: {
+            display: true,
+            labels: {
+				boxWidth: 2,
+				padding: 27
+            },
+			position: 'bottom',
+			align: 'center',
+			fullWidth: 'false',
+        },
+    scales: {
+        yAxes: [{
+            display: true,
+            ticks: {
+                suggestedMin: 0,
+            }
+        }]
+    }
+   },
    data: {
       labels: labels,
       datasets: [{
          label: 'Daily Hospitalized Count',
          data: data1,
-         backgroundColor: '#FFA500'
+         backgroundColor: '#FFA500',
+		 borderColor: '#FFA500'		 
       },
 	  {
          label: 'Total Hospitalized',

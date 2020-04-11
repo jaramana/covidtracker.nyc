@@ -7,7 +7,7 @@ library(readr)
 library(jsonlite)
 
 ##Set working directory
-setwd("C:/Users/jaramana/Desktop/COVID Tracker NYC")
+setwd("C:/Users/jaramana/Desktop/covid-tracker-nyc")
 
 
 
@@ -29,6 +29,12 @@ d <- d %>% select(1,2,3)
 
 ##Rename column header to merge
 d <- d %>% rename(zcta = MODZCTA)
+
+##Sum duplicate zipcodes (sometimes happens)
+d <- aggregate(list(d$'Positive', d$'Total'), by = list(d$'zcta'), sum)
+d <- rename(d, 'zcta' = 1)
+d <- rename(d, 'Positive' = 2)
+d <- rename(d, 'Total' = 3)
 
 ##Merge Zip Code shapefile with Testing data (DOHMH)
 m <- merge(p, d, by='zcta')
@@ -55,7 +61,7 @@ m$totalperthou <- as.numeric(m$totalperthou)
 m <- spTransform(m, CRS("+proj=longlat +datum=WGS84 +init=epsg:4269"))
 
 ##Write as GeoJSON
-writeOGR(m, "data/covid_nyc.js", layer="merged", driver="GeoJSON", overwrite_layer=TRUE)
+writeOGR(m, "data/covid_nyc_ogr.json", layer="merged", driver="GeoJSON", overwrite_layer=TRUE)
 
 ##Get quantiles for breaks / legend
 quantile(m$Positive, probs = seq(0, 1, .20))

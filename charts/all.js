@@ -25,7 +25,7 @@ var config = {
             display: true,
             labels: {
 				boxWidth: 1.7,
-				padding: 17
+				padding: 27
             },
 			position: 'bottom',
 			align: 'center',

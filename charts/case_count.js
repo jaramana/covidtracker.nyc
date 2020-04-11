@@ -13,12 +13,33 @@ var data2 = case_hosp_death_cumulative.jsonarray.map(function(e) {
 var ctx = case_count.getContext('2d');
 var config = {
    type: 'bar',
+   options: {
+        legend: {
+            display: true,
+            labels: {
+				boxWidth: 2,
+				padding: 27
+            },
+			position: 'bottom',
+			align: 'center',
+			fullWidth: 'false',
+        },
+    scales: {
+        yAxes: [{
+            display: true,
+            ticks: {
+                suggestedMin: 0,
+            }
+        }]
+    }
+   },
    data: {
       labels: labels,
       datasets: [{
          label: 'Daily Positive Tests',
          data: data1,
-         backgroundColor: '#800080'
+         backgroundColor: '#800080',
+         borderColor: '#800080'		 
       },
 	  {
          label: 'Total Positive Tests',

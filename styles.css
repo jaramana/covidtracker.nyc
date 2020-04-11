@@ -75,5 +75,34 @@ body,
 
 
 .wrapper {
-  margin: 0px auto;
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+
+
+
+
+
+
+.ct-btn-scroll {
+    -webkit-transition: background-color 0.25s ease-in-out;
+    transition: background-color 0.25s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#map {
+  width: 100%;
+  height: 94%;
 }
