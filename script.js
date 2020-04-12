@@ -30,10 +30,10 @@ return d > 96  ? '#ffcc00' :
 
 // get color depending on population density value
 function getColor_positive(d) {
-return d > 469  ? '#b30000' :
-	   d > 278  ? '#e34a33' :
-	   d > 177  ? '#fc8d59' :
-	   d > 29  ? '#fdcc8a' :
+return d > 796  ? '#b30000' :
+	   d > 431  ? '#e34a33' :
+	   d > 275  ? '#fc8d59' :
+	   d > 36  ? '#fdcc8a' :
 	   d > 0   ? '#fef0d9' :
 				  '#ffffff';
 }
@@ -43,8 +43,8 @@ legend_positive.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
 		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Positive cases</h6>'],
-		grades = [999999, 469, 278, 177, 29, 0],
-        labels = ["469 +", "278 - 468.9", "177 - 277.9", "29 - 176.9", "1 - 28.9", "No Positives/Data"]
+		grades = [999999, 796, 431, 275, 36, 0],
+        labels = ["796 +", "431 - 795", "275 - 430", "36 - 274", "1 - 34", "No Positives/Data"]
 		;
 		
     // loop through our density intervals and generate a label with a colored square for each interval
@@ -64,10 +64,10 @@ legend_positive.onAdd = function (map) {
 
 
 function getColor_positive_pc(d) {
-return d > 8  ? '#b30000' :
-	   d > 7  ? '#e34a33' :
-	   d > 5  ? '#fc8d59' :
-	   d > 4  ? '#fdcc8a' :
+return d > 14.7  ? '#b30000' :
+	   d > 11.4  ? '#e34a33' :
+	   d > 7.8  ? '#fc8d59' :
+	   d > 4.7  ? '#fdcc8a' :
 	   d > 0 ? '#fef0d9' :
 				  '#ffffff';
 }
@@ -77,8 +77,8 @@ legend_positive_pc.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
 		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Positive cases<br>per one thousand</h6>'],
-		grades = [999999, 8, 7, 5, 4, 0],
-        labels = ["8 +", "7 - 7.9", "5 - 6.9", "4 - 4.9", "1 - 3.9", "No Positives/Data"]
+		grades = [999999, 14.7, 11.4, 7.8, 4.7, 0],
+        labels = ["14.7 +", "11.4 - 14.6", "7.8 - 11.3", "4.7 - 7.7", "1 - 4.6", "No Positives/Data"]
 		;
 		
     // loop through our density intervals and generate a label with a colored square for each interval
@@ -98,10 +98,10 @@ legend_positive_pc.onAdd = function (map) {
 
 
 function getColor_total(d) {
-return d > 874  ? '#08519c' :
-	   d > 539  ? '#3182bd' :
-	   d > 351  ? '#6baed6' :
-	   d > 77  ? '#bdd7e7' :
+return d > 1347  ? '#08519c' :
+	   d > 807  ? '#3182bd' :
+	   d > 514  ? '#6baed6' :
+	   d > 101  ? '#bdd7e7' :
 	   d > 0   ? '#eff3ff' :
 				  '#ffffff';
 }
@@ -111,8 +111,8 @@ legend_total.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
 		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Total tests</h6>'],
-		grades = [999999, 874, 539, 351, 77, 0],
-        labels = ["874 +", "539 - 873", "351 - 538", "77 - 350", "1 - 76", "No Tests/Data"]
+		grades = [999999, 1347, 807, 514, 101, 0],
+        labels = ["1347 +", "807 - 1346", "514 - 806", "101 - 513", "1 - 100", "No Tests/Data"]
 		;
 		
     // loop through our density intervals and generate a label with a colored square for each interval
@@ -132,10 +132,10 @@ legend_total.onAdd = function (map) {
 
 
 function getColor_total_pc(d) {
-return d > 16  ? '#08519c' :
-	   d > 13  ? '#3182bd' :
-	   d > 11  ? '#6baed6' :
-	   d > 8  ? '#bdd7e7' :
+return d > 25.3  ? '#08519c' :
+	   d > 19.3  ? '#3182bd' :
+	   d > 15.3  ? '#6baed6' :
+	   d > 11.5  ? '#bdd7e7' :
 	   d > 0 ? '#eff3ff' :
 				  '#ffffff';
 }
@@ -145,8 +145,8 @@ legend_total_pc.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
 		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Total tests<br>per one thousand</h6>'],
-		grades = [999999, 16, 13, 11, 8, 0],
-        labels = ["16 +", "13 - 15.9", "11 - 12.9", "8 - 10.9", "1 - 7.9", "No Tests/Data"]
+		grades = [999999, 25.3, 19.3, 15.3, 11.5, 0],
+        labels = ["25.3 +", "19.3 - 25.2", "15.3 - 19.2", "11.5 - 15.2", "1 - 11.4", "No Tests/Data"]
 		;
 		
     // loop through our density intervals and generate a label with a colored square for each interval
@@ -1033,7 +1033,7 @@ var mapOptions = {
 	attributionControl: false, 
 	center: [40.715, -74.1],
 	zoom: 11,
-	minZoom: 9,
+	minZoom: 10,
 	maxZoom: 19,
 };
 
