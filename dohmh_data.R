@@ -17,7 +17,7 @@ setwd("C:/Users/jaramana/Desktop/covid-tracker-nyc")
 urlfile="https://raw.githubusercontent.com/nychealth/coronavirus-data/master/tests-by-zcta.csv"
 
 ##Load data
-p <- shapefile("data/raw/nyu_2451_34509/nyu_2451_34509")
+p <- shapefile("data/raw/nyu_2451_34509_filtered/nyu_2451_34509_filtered")
 d <- read_csv(url(urlfile))
 c <- read_csv("data/raw/ACS2015_zctaallvars_modified.csv")
 

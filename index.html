@@ -13,10 +13,8 @@
 <link rel="stylesheet" href="./plugins/leaflet.groupedlayercontrol.css">
 <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
-
 </head>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -30,7 +28,17 @@
 </script>
 
 
+
+
+
 <body>
+
+
+
+
+
+<div id="map-wrapper">
+
 <!-- partial:index.partial.html -->
 <div id="sidebar" class="leaflet-sidebar collapsed">
     <!-- Nav tabs -->
@@ -39,15 +47,12 @@
    	  <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
 	  <li><a href="#profile" role="tab"><i class="fa fa-info-circle"></i></a></li>
 	  <li><a href="#download" role="tab"><i class="fa fa-arrow-down"></i></a></li>
-
         </ul>
-
 	<!-- bottom aligned tabs -->
 	<ul role="tablist">
 		<li><a href="https://github.com/jaramana/covid-tracker-nyc" target="_blank"><i class="fab fa-github"></i></a></li>
 	</ul>
     </div>
-
   <!-- Tab panes -->
   <div class="leaflet-sidebar-content">
     <div class="leaflet-sidebar-pane" id="home">
@@ -61,7 +66,6 @@
 		document.write("<p style='text-align:left;color: #555; padding-left: 10px;'>Last updated " + document.lastModified +"</p>");
 		</script>
     </div>
-	
     <div class="leaflet-sidebar-pane" id="profile">
       <h1 class="leaflet-sidebar-header">COVID Tracker NYC<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
 	  <br>
@@ -71,24 +75,92 @@
 	<p>This is still a work in progress. Indicators, layers, and methodology are open for scrutiny, and can change. Please submit any comment to <a href = "mailto: ashaiban@pratt.edu" target="_blank">ashaiban@pratt.edu</a>, or fork the project at <a href = "https://github.com/jaramana/covid-tracker-nyc" target="_blank">GitHub</a>. This needs a lot more work, so any suggestions, contributions, or tips are welcome and invited.</a></p>
 	<p>Stay safe.</p>
     </div>
-
     <div class="leaflet-sidebar-pane" id="download">
       <h1 class="leaflet-sidebar-header">COVID Tracker NYC<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
 	  <br>
 	  <h6>Downloads</h6>	  
-	  
 	  <p>Coming Soon...</p>
-	  <p>See <a href = "https://github.com/jaramana/covid-tracker-nyc" target="_blank">GitHub</a> for web map files.</p>
-	 
-
+	  <p>See <a href = "https://github.com/jaramana/covid-tracker-nyc" target="_blank">GitHub</a> for web map files.</p> 
     </div>
   </div>
 </div>
+<div id="map"></div>
+
+
+
+
+<div id="container">
+<a class="ct-btn-scroll ct-js-btn-scroll" style="text-decoration:none; color: white; opacity: 0.7;" href="#section2"><p style="margin-bottom:0; font-weight: bold;">charts below</p><img alt="Arrow Down Icon" src="down_white.png" height="42" width="42"></a>
+</div>
+
+
+</div>
+
+
+
+
+
+
+<section id="section2">
+
+<center>
+<div class="wrapper">
+<h6>COVID Cases, Hospitilizations, and Deaths</h6>
+<canvas id="case_hosp_death"></canvas>
+</div>
+</center>
+<hr>
+
+<center>
+<div class="wrapper">
+<h6>Cases (positive tests)</h6>				
+<canvas id="case_count"></canvas>
+</div>
+</center>
+<hr>
+
+<center>
+<div class="wrapper">
+<h6>Hospitalized</h6>		
+<canvas id="hospitalized"></canvas>
+</div>
+</center>
+<hr>	
+
+<center>
+<div class="wrapper">
+<h6>Deaths</h6>
+<canvas id="death_count"></canvas>
+</div>
+</center>
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script class="popupTemplate_positive" type="x-tmpl-mustache">
 <center>
   <div>
-  	<div><h6>{{zcta}}</h6></div>
+  	<div><h6>{{neighborhood}} -{{zcta}}</h6></div>
 	<div><b>{{Positive}} Positive Cases ({{positiveperthou}} / 1000)</b></div>
 	<div><b>{{Total}} Total Cases ({{totalperthou}} / 1000)</b></div>
 	<br>
@@ -100,7 +172,7 @@
 <script class="popupTemplate_sdi" type="x-tmpl-mustache">
 <center>
   <div>
-  	<div><h6>{{zcta}}</h6></div>
+  	<div><h6>{{neighborhood}} - {{zcta}}</h6></div>
 	<div>Single Parent Household:<b> {{percnt_singlparntfly}}%</b></div>
 	<div>Black / African-American:<b> {{percnt_black}}%</b></div>
 	<div>High School Drop-out:<b> {{percnt_dropout}}%</b></div>
@@ -171,66 +243,10 @@
   </center>
 </script>
 
-<div id="map"></div>
 
 
 
-
-
-
-  <div class="container">
-        <center><a class="ct-btn-scroll ct-js-btn-scroll" style="text-decoration:none; color: black;" href="#section2"><p style="margin-bottom:0; font-weight: bold;">charts below</p><img alt="Arrow Down Icon" src="down.png" height="42" width="42"></a></center>
-  </div>
-
-
-  <section id="section2">
-  
-	  
-<center>
-		<div class="wrapper">
-		<h6>COVID Cases, Hospitilizations, and Deaths</h6>
-      <canvas id="case_hosp_death"></canvas>
-    </div>
-</center>
-<hr>
-
-<center>
-    <div class="wrapper">
-		<h6>Deaths</h6>
-      <canvas id="death_count"></canvas>
-    </div>
-</center>
-<hr>
-
-<center>
-	    <div class="wrapper">
-		<h6>Hospitalized</h6>		
-      <canvas id="hospitalized"></canvas>
-    </div>
-	</center>
-<hr>	
-	<center>
-		    <div class="wrapper">
-		<h6>Cases (positive tests)</h6>				
-      <canvas id="case_count"></canvas>
-    </div>
-		</center>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js'></script>
@@ -252,12 +268,11 @@
 
 <script src='./scroll-down.js'></script>
 
-	<script src="./data/case-hosp-death_cumulative.js"></script>
+<script src="./data/case-hosp-death_cumulative.js"></script>
+<script src="./charts/death_count.js"></script>
+<script src="./charts/hospitalized.js"></script>
+<script src="./charts/case_count.js"></script>
+<script src="./charts/all.js"></script>
 
-    <script src="./charts/death_count.js"></script>
-	<script src="./charts/hospitalized.js"></script>
-	<script src="./charts/case_count.js"></script>
-	<script src="./charts/all.js"></script>
 
-  </body>
 </html>
