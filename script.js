@@ -260,7 +260,8 @@ legend_sdi.onAdd = function (map) {
         fillOpacity: 1,
       });
 	  	//vzcta.bringToFront();		
-
+		healthcare.bringToFront();
+		
       if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
         layer.bringToFront();
       }
@@ -268,6 +269,8 @@ legend_sdi.onAdd = function (map) {
 var positive;
     function resetHighlight_positive(e) {
       positive.resetStyle(e.target);
+	  
+	  
     }
 
     function onEachFeature_positive(feature, layer) {
@@ -1020,12 +1023,72 @@ return Mustache.render(popupTemplate_SVI2018_theme4, layer.feature.properties);
 
 
 
+/*/
+ // get color depending on population density value
+function getColor5(d) {
+        return d === 'Health Care'  ? "#ff7f00" :
+                               d === 'Human Services'  ? '#0000ff' :
+                            "#de2d26";
+    }
+    function style5(feature) {
+      return {
+        weight: 2,
+        opacity: 1,
+        color: getColor5(feature.properties.Facilities_facgroup),
+        fillOpacity: 0.2,
+                       fillColor: getColor5(feature.properties.Facilities_facgroup),
+      };
+    }
+    healthcare = L.geoJson(Facilities_Accessible, {
+      style: style5,
+    });
 
 
+// Add popups to the layer
+healthcare.bindPopup(function (layer) {
+// This function is called whenever a feature on the layer is clicked
+console.log(layer.feature.properties);
+// Render the template with all of the properties. Mustache ignores properties
+// that aren't used in the template, so this is fine.
+return Mustache.render(popupTemplate_nycha_geo, layer.feature.properties);
+});        
 
+
+var legend5 = L.control({position: 'bottomright'});
+    legend5.onAdd = function (map) {
+    var div5 = L.DomUtil.create('div', 'info legend');
+    labels5 = ['<strong>Facilities</strong>'],
+    categories5 = ['Health Care','Human Services','Other'];
+ 
+    for (var i = 0; i < categories5.length; i++) {
+            div5.innerHTML +=
+            labels5.push(
+                '<i class="circle" style="background:' + getColor5(categories5[i]) + '"></i> ' +
+                (categories5[i] ? categories5[i] : '+'));
+        }
+        div5.innerHTML = labels5.join('<br>');
+    return div5;
+};
+
+/*/
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
+
+
+
+var positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+        attribution: '©OpenStreetMap, ©CartoDB'
+});
+
+var positronLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png', {
+        attribution: '©OpenStreetMap, ©CartoDB',
+        pane: 'labels'
+});
+
+var basemap = L.layerGroup([positron, positronLabels]);
+
+
 
 
 var mapOptions = {
@@ -1043,15 +1106,6 @@ map.createPane('labels');
 map.getPane('labels').style.zIndex = 650;
 map.getPane('labels').style.pointerEvents = 'none';
 
-
-var positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png', {
-        attribution: '©OpenStreetMap, ©CartoDB'
-}).addTo(map);
-
-var positronLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png', {
-        attribution: '©OpenStreetMap, ©CartoDB',
-        pane: 'labels'
-}).addTo(map);
 
 
 positive.addTo(map);
@@ -1079,12 +1133,14 @@ map.on('baselayerchange', function (eventLayer) {
         map.removeControl(currentLegend );
         currentLegend = legend_positive;
         legend_positive.addTo(map);
+		healthcare.bringToFront();		
 		//vzcta.bringToFront();
     }
     else if  (eventLayer.name === 'Positive cases per one thousand') {
         map.removeControl(currentLegend );
         currentLegend = legend_positive_pc;
-        legend_positive_pc.addTo(map);	
+        legend_positive_pc.addTo(map);
+		healthcare.bringToFront();		
 		//vzcta.bringToFront();
 
     }
@@ -1092,42 +1148,49 @@ map.on('baselayerchange', function (eventLayer) {
        map.removeControl(currentLegend );
         currentLegend = legend_total;
         legend_total.addTo(map);
+		healthcare.bringToFront();	
 		//vzcta.bringToFront();		
     }
     else if  (eventLayer.name === 'Total tests per one thousand') {
        map.removeControl(currentLegend );
         currentLegend = legend_total_pc;
         legend_total_pc.addTo(map);
+		healthcare.bringToFront();		
 		//vzcta.bringToFront();
     }
     else if  (eventLayer.name === 'Overall Vulnerability') {
        map.removeControl(currentLegend );
         currentLegend = legend_SVI2018_overall;
         legend_SVI2018_overall.addTo(map);
+		healthcare.bringToFront();		
 		//vzcta.bringToFront();
     }
     else if  (eventLayer.name === 'Socioeconomic Vulnerability') {
        map.removeControl(currentLegend );
         currentLegend = legend_SVI2018_theme1;
         legend_SVI2018_theme1.addTo(map);
+		healthcare.bringToFront();		
 		//vzcta.bringToFront();
     }
     else if  (eventLayer.name === 'Household Composition & Disability Vulnerability') {
        map.removeControl(currentLegend );
         currentLegend = legend_SVI2018_theme2;
         legend_SVI2018_theme2.addTo(map);
+		healthcare.bringToFront();		
 		//vzcta.bringToFront();
     }
     else if  (eventLayer.name === 'Minority Status & Language Vulnerability') {
        map.removeControl(currentLegend );
         currentLegend = legend_SVI2018_theme3;
         legend_SVI2018_theme3.addTo(map);
+		healthcare.bringToFront();		
 		//vzcta.bringToFront();
     }
     else if  (eventLayer.name === 'Housing Type & Transportation Vulnerability') {
        map.removeControl(currentLegend );
         currentLegend = legend_SVI2018_theme4;
         legend_SVI2018_theme4.addTo(map);
+		healthcare.bringToFront();
 		//vzcta.bringToFront();
     }
 	/*/
@@ -1172,6 +1235,8 @@ var underlays = {
 };
 
 var overlays = {
+//	"Healthcare Facilities": healthcare,
+	"Basemap": basemap,
 //	"Vulnerable Zip Codes": vzcta,
 };
 
@@ -1192,7 +1257,7 @@ var layerControl = L.control.layers(underlays, overlays, {position: "topright",c
 var oldLayerControl = layerControl.getContainer();
 var newLayerControl = $("#layercontrol");
 newLayerControl.append(oldLayerControl);
-//$(".leaflet-control-layers-list").after("More layers coming soon...");
+//$(".leaflet-control-layers-list").prepend("<b>COVID Cases</b>");
   });
 
 

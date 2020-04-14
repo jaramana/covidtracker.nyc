@@ -39,6 +39,7 @@
 
 <div id="map-wrapper">
 
+
 <!-- partial:index.partial.html -->
 <div id="sidebar" class="leaflet-sidebar collapsed">
     <!-- Nav tabs -->
@@ -84,56 +85,65 @@
     </div>
   </div>
 </div>
+
+
+
 <div id="map"></div>
 
 
 
 
 <div id="container">
-<a class="ct-btn-scroll ct-js-btn-scroll" style="text-decoration:none; color: white; opacity: 0.7;" href="#section2"><p style="margin-bottom:0; font-weight: bold;">charts below</p><img alt="Arrow Down Icon" src="down_white.png" height="42" width="42"></a>
+<a class="ct-btn-scroll ct-js-btn-scroll" style="text-decoration:none; color: black; opacity: 0.7;" href="#section2"><p style="margin-bottom:0; font-weight: bold; ">charts below<br><img alt="Arrow Down Icon" src="down.png" height="42" width="42"></a></p>
 </div>
 
 
 </div>
 
 
-
+<hr>
 
 
 
 <section id="section2">
-
+<br>
 <center>
 <div class="wrapper">
 <h6>COVID Cases, Hospitilizations, and Deaths</h6>
 <canvas id="case_hosp_death"></canvas>
 </div>
 </center>
+<br>
 <hr>
 
+<br>
 <center>
 <div class="wrapper">
 <h6>Cases (positive tests)</h6>				
 <canvas id="case_count"></canvas>
 </div>
 </center>
+<br>
 <hr>
 
+<br>
 <center>
 <div class="wrapper">
 <h6>Hospitalized</h6>		
 <canvas id="hospitalized"></canvas>
 </div>
 </center>
+<br>
 <hr>	
 
+<br>
 <center>
 <div class="wrapper">
 <h6>Deaths</h6>
 <canvas id="death_count"></canvas>
 </div>
 </center>
-
+<br>
 
 </body>
 
@@ -269,6 +279,7 @@
 <script src='./scroll-down.js'></script>
 
 <script src="./data/case-hosp-death_cumulative.js"></script>
+<!--<script src="./data/Facilities_Accessible.js"></script> -->
 <script src="./charts/death_count.js"></script>
 <script src="./charts/hospitalized.js"></script>
 <script src="./charts/case_count.js"></script>
