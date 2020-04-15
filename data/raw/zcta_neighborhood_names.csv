@@ -81,6 +81,7 @@ zcta,neighborhood,borough
 10012,Greenwich Village and Soho,Manhattan
 10013,Greenwich Village and Soho,Manhattan
 10014,Greenwich Village and Soho,Manhattan
+10282,Lower Manhattan,Manhattan
 10004,Lower Manhattan,Manhattan
 10005,Lower Manhattan,Manhattan
 10006,Lower Manhattan,Manhattan
@@ -99,6 +100,7 @@ zcta,neighborhood,borough
 10023,Upper West Side,Manhattan
 10024,Upper West Side,Manhattan
 10025,Upper West Side,Manhattan
+10069,Upper West Side,Manhattan
 10031,Inwood and Washington Heights,Manhattan
 10032,Inwood and Washington Heights,Manhattan
 10033,Inwood and Washington Heights,Manhattan
@@ -131,6 +133,7 @@ zcta,neighborhood,borough
 11104,Northwest Queens,Queens
 11105,Northwest Queens,Queens
 11106,Northwest Queens,Queens
+11109,Northwest Queens,Queens
 11374,West Central Queens,Queens
 11375,West Central Queens,Queens
 11379,West Central Queens,Queens

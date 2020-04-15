@@ -84,6 +84,10 @@ d <- read_csv(url(urlfile))
 ##Change NA to 0
 d[is.na(d)] <- 0
 
+
+##Rename column header (sometimes DOHMH messes this up)
+d <- rename(d, 'DATE_OF_INTEREST' = 1)
+
 ##Create new columns with cumulative sums
 d[,"NEW_COVID_CASE_COUNT_CUM"] <- cumsum(d$NEW_COVID_CASE_COUNT)
 d[,"HOSPITALIZED_CASE_COUNT_CUM"] <- cumsum(d$HOSPITALIZED_CASE_COUNT)
