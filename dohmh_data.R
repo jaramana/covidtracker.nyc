@@ -20,6 +20,8 @@ urlfile="https://raw.githubusercontent.com/nychealth/coronavirus-data/master/tes
 p <- shapefile("data/raw/nyu_2451_34509_filtered/nyu_2451_34509_filtered")
 d <- read_csv(url(urlfile))
 c <- read_csv("data/raw/ACS2015_zctaallvars_modified.csv")
+n <- read_csv("data/raw/zcta_neighborhood_names.csv")
+
 
 ##Remove unncessary columns
 p@data <- p@data %>% select(1)
@@ -38,6 +40,9 @@ d <- rename(d, 'Total' = 3)
 
 ##Merge Zip Code shapefile with Testing data (DOHMH)
 m <- merge(p, d, by='zcta')
+
+##Merge Spatial data with neighborhood names
+m <- merge(m, n, by='zcta')
 
 ##Merge Spatial data with census data
 m <- merge(m, c, by='zcta')

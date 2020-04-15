@@ -1,4 +1,4 @@
-
+ 
 // Fetch lanes data from our Glitch project
 var vzv_tcst = fetch('https://data.cityofnewyork.us/resource/hiik-hmf3.geojson')
   .then(function (response) {
