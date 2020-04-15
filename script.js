@@ -260,7 +260,7 @@ legend_sdi.onAdd = function (map) {
         fillOpacity: 1,
       });
 	  	//vzcta.bringToFront();		
-		healthcare.bringToFront();
+		////healthcare.bringToFront();
 		
       if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
         layer.bringToFront();
@@ -1134,14 +1134,14 @@ map.on('baselayerchange', function (eventLayer) {
         map.removeControl(currentLegend );
         currentLegend = legend_positive;
         legend_positive.addTo(map);
-		healthcare.bringToFront();		
+		////healthcare.bringToFront();		
 		//vzcta.bringToFront();
     }
     else if  (eventLayer.name === 'Positive cases per one thousand') {
         map.removeControl(currentLegend );
         currentLegend = legend_positive_pc;
         legend_positive_pc.addTo(map);
-		healthcare.bringToFront();		
+		////healthcare.bringToFront();		
 		//vzcta.bringToFront();
 
     }
@@ -1149,49 +1149,49 @@ map.on('baselayerchange', function (eventLayer) {
        map.removeControl(currentLegend );
         currentLegend = legend_total;
         legend_total.addTo(map);
-		healthcare.bringToFront();	
+		////healthcare.bringToFront();	
 		//vzcta.bringToFront();		
     }
     else if  (eventLayer.name === 'Total tests per one thousand') {
        map.removeControl(currentLegend );
         currentLegend = legend_total_pc;
         legend_total_pc.addTo(map);
-		healthcare.bringToFront();		
+		////healthcare.bringToFront();		
 		//vzcta.bringToFront();
     }
     else if  (eventLayer.name === 'Overall Vulnerability') {
        map.removeControl(currentLegend );
         currentLegend = legend_SVI2018_overall;
         legend_SVI2018_overall.addTo(map);
-		healthcare.bringToFront();		
+		////healthcare.bringToFront();		
 		//vzcta.bringToFront();
     }
     else if  (eventLayer.name === 'Socioeconomic Vulnerability') {
        map.removeControl(currentLegend );
         currentLegend = legend_SVI2018_theme1;
         legend_SVI2018_theme1.addTo(map);
-		healthcare.bringToFront();		
+		////healthcare.bringToFront();		
 		//vzcta.bringToFront();
     }
     else if  (eventLayer.name === 'Household Composition & Disability Vulnerability') {
        map.removeControl(currentLegend );
         currentLegend = legend_SVI2018_theme2;
         legend_SVI2018_theme2.addTo(map);
-		healthcare.bringToFront();		
+		////healthcare.bringToFront();		
 		//vzcta.bringToFront();
     }
     else if  (eventLayer.name === 'Minority Status & Language Vulnerability') {
        map.removeControl(currentLegend );
         currentLegend = legend_SVI2018_theme3;
         legend_SVI2018_theme3.addTo(map);
-		healthcare.bringToFront();		
+		////healthcare.bringToFront();		
 		//vzcta.bringToFront();
     }
     else if  (eventLayer.name === 'Housing Type & Transportation Vulnerability') {
        map.removeControl(currentLegend );
         currentLegend = legend_SVI2018_theme4;
         legend_SVI2018_theme4.addTo(map);
-		healthcare.bringToFront();
+		////healthcare.bringToFront();
 		//vzcta.bringToFront();
     }
 	/*/
