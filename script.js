@@ -1111,6 +1111,7 @@ map.getPane('labels').style.pointerEvents = 'none';
 positive.addTo(map);
 
 
+basemap.addTo(map);
 
 
 
