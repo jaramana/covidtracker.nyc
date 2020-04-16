@@ -35,6 +35,15 @@ p {
   z-index: 1;
 }
 
+#container_up {
+  position: relative;
+  bottom: 0;
+  height: auto;
+  width: 100%;
+  text-align:center;
+  z-index: 1;
+}
+
 .wrapper {
   max-width: 800px;
   margin: 0px auto;
@@ -45,8 +54,11 @@ p {
     transition: background-color 0.25s ease-in-out;
 }
 
-
-
+h6 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
 
 
 

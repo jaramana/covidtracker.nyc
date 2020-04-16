@@ -3,22 +3,24 @@ var labels = case_hosp_death_cumulative.jsonarray.map(function(e) {
 });
 
 var data1 = case_hosp_death_cumulative.jsonarray.map(function(e) {
-   return e.HOSPITALIZED_CASE_COUNT;
+   return e.DEATH_COUNT;
 });;
 
 var data2 = case_hosp_death_cumulative.jsonarray.map(function(e) {
-   return e.HOSPITALIZED_CASE_COUNT_CUM;
+   return e.DEATH_COUNT_CUM;
 });;
 
-var ctx = hospitalized.getContext('2d');
+var ctx = death_count.getContext('2d');
 var config = {
    type: 'bar',
-   options: {
+    options: {
         legend: {
             display: true,
             labels: {
 				boxWidth: 2,
-				padding: 27
+				padding: 27,
+				fontFamily: 'Arial',
+				fontColor: '#555'				
             },
 			position: 'bottom',
 			align: 'center',
@@ -36,15 +38,15 @@ var config = {
    data: {
       labels: labels,
       datasets: [{
-         label: 'Daily Hospitalized Count',
+         label: 'Daily Deaths',
          data: data1,
-         backgroundColor: '#FFA500',
-		 borderColor: '#FFA500'		 
+         backgroundColor: '#ff0000',
+         borderColor: '#ff0000'
       },
 	  {
-         label: 'Total Hospitalized',
+         label: 'Total Death',
          data: data2,
-         borderColor: '#FFA500',
+         borderColor: '#ff0000',
 		 backgroundColor: "rgba(220,220,220,0.0)",
 		 type: 'line'
       }]

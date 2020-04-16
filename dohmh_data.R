@@ -9,8 +9,6 @@ library(jsonlite)
 ##Set working directory
 setwd("C:/Users/jaramana/Desktop/covid-tracker-nyc")
 
-
-
 ##Spatial Visualization--
 
 ##Link to DOHMH Github Data
@@ -66,7 +64,7 @@ m$totalperthou <- as.numeric(m$totalperthou)
 m <- spTransform(m, CRS("+proj=longlat +datum=WGS84 +init=epsg:4269"))
 
 ##Write as GeoJSON
-writeOGR(m, "data/covid_nyc_ogr.json", layer="merged", driver="GeoJSON", overwrite_layer=TRUE)
+writeOGR(m, "data/covid_nyc.json", layer="merged", driver="GeoJSON", overwrite_layer=TRUE)
 
 ##Get quantiles for breaks / legend
 quantile(m$Positive, probs = seq(0, 1, .20))
@@ -84,7 +82,6 @@ d <- read_csv(url(urlfile))
 ##Change NA to 0
 d[is.na(d)] <- 0
 
-
 ##Rename column header (sometimes DOHMH messes this up)
 d <- rename(d, 'DATE_OF_INTEREST' = 1)
 
@@ -97,5 +94,4 @@ d[,"DEATH_COUNT_CUM"] <- cumsum(d$DEATH_COUNT)
 write_json(d, "data/case-hosp-death_cumulative.json", pretty = TRUE)
 
 ##Write as csv for public use
-write.csv(d, "data/case-hosp-death_cumulative.csv", row.names = FALSE)
-
+write.csv(d, "download/case-hosp-death_cumulative.csv", row.names = FALSE)

@@ -3,22 +3,31 @@ var labels = case_hosp_death_cumulative.jsonarray.map(function(e) {
 });
 
 var data1 = case_hosp_death_cumulative.jsonarray.map(function(e) {
-   return e.NEW_COVID_CASE_COUNT;
-});;
-
-var data2 = case_hosp_death_cumulative.jsonarray.map(function(e) {
    return e.NEW_COVID_CASE_COUNT_CUM;
 });;
 
-var ctx = case_count.getContext('2d');
+var data2 = case_hosp_death_cumulative.jsonarray.map(function(e) {
+   return e.HOSPITALIZED_CASE_COUNT_CUM;
+});;
+
+var data3 = case_hosp_death_cumulative.jsonarray.map(function(e) {
+   return e.DEATH_COUNT_CUM;
+});;
+
+
+
+
+var ctx = case_hosp_death.getContext('2d');
 var config = {
-   type: 'bar',
+   type: 'line',
    options: {
         legend: {
             display: true,
             labels: {
-				boxWidth: 2,
-				padding: 27
+				boxWidth: 1.7,
+				padding: 27,
+				fontFamily: 'Arial',
+				fontColor: '#555'
             },
 			position: 'bottom',
 			align: 'center',
@@ -35,19 +44,25 @@ var config = {
    },
    data: {
       labels: labels,
-      datasets: [{
-         label: 'Daily Positive Tests',
-         data: data1,
-         backgroundColor: '#800080',
-         borderColor: '#800080'		 
-      },
+      datasets: [
 	  {
          label: 'Total Positive Tests',
-         data: data2,
+         data: data1,
          borderColor: '#800080',
 		 backgroundColor: "rgba(220,220,220,0.0)",
-		 type: 'line'
-      }]
+      },
+	  {
+         label: 'Total Hospitalized',
+         data: data2,
+         borderColor: '#FFA500',
+		 backgroundColor: "rgba(220,220,220,0.0)",
+      },
+	  {
+         label: 'Total Death',
+         data: data3,
+         borderColor: '#ff0000',
+		 backgroundColor: "rgba(220,220,220,0.0)",
+      },]
    }
 };
 

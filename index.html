@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>COVID Tracker NYC</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 <link rel="stylesheet" href="./leaflet/leaflet.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -11,11 +9,257 @@
 <link rel="stylesheet" href="./plugins/leaflet-sidebar.min.css">
 <link rel="stylesheet" href="./styles.css">
 <link rel="stylesheet" href="./plugins/leaflet.groupedlayercontrol.css">
-<link rel="icon" href="favicon.ico" type="image/x-icon"/>
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+<!-- SEO -->
+<meta name="description" content="COVID Tracker NYC maps and charts COVID-19 Cases in New York City using publically available data from the NYC Department of Mental Health and Hygiene.">
+<meta property="og:type" content="visualization"/>
+<meta property="og:title" content="COVID Tracker NYC"/>
+<meta property="og:description" content="COVID Tracker NYC maps and charts COVID-19 Cases in New York City using publically available data from the NYC Department of Mental Health and Hygiene."/>
+<meta name="twitter:site" content="@COVIDTrackerNYC" />
+<meta name="twitter:title" content="COVID Tracker NYC" />
+<meta name="twitter:description" content="COVID Tracker NYC maps and charts COVID-19 Cases in New York City using publically available data from the NYC Department of Mental Health and Hygiene."/>
+<meta name="twitter:url" content="covidtracker.nyc"/>
+
+<head>
+    <meta charset="UTF-8">
+    <title>COVID Tracker NYC</title>
 </head>
 
+<body>
 
+<div id="map-wrapper">
+    <div id="sidebar" class="leaflet-sidebar collapsed">
+        <!-- Nav tabs -->
+        <div class="leaflet-sidebar-tabs">
+            <ul role="tablist">
+                <!-- top aligned tabs -->
+                <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+                <li><a href="#profile" role="tab"><i class="fa fa-info-circle"></i></a></li>
+                <li><a href="#download" role="tab"><i class="fa fa-arrow-down"></i></a></li>
+            </ul>
+            <!-- bottom aligned tabs -->
+            <ul role="tablist">
+                <li><a href="https://github.com/jaramana/covid-tracker-nyc" target="_blank"><i class="fab fa-github"></i></a></li>
+            </ul>
+        </div>
+        <!-- Tab panes -->
+        <div class="leaflet-sidebar-content">
+            <div class="leaflet-sidebar-pane" id="home">
+                <h1 class="leaflet-sidebar-header">
+        COVID Tracker NYC
+        <span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
+      </h1>
+                <br>
+                <span id="layercontrol"></span>
+                <script language="Javascript">
+                    document.write("<p style='text-align:left;color: #555; padding-left: 10px;'>Last updated " + document.lastModified + "</p>");
+                </script>
+            </div>
+            <div class="leaflet-sidebar-pane" id="profile">
+                <h1 class="leaflet-sidebar-header">COVID Tracker NYC<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <br>
+                <h6>About</h6>
+                <p>This interactive web map tracks tests for the corona virus disease (COVID-19) in New York City using <a href="https://github.com/nychealth/coronavirus-data" target="_blank">publically available data</a> from the New York City Department of Health and Mental Hygiene (DOHMH).</p>
+                <p>It includes layers from the United States Center for Disease Control's "<a href="https://svi.cdc.gov/index.html" target="_blank">Social Vulnerability Index</a>."</p>
+                <p>This is still a work in progress. Indicators, layers, and methodology are open for scrutiny, and can change. Please submit any comment to <a href="mailto: ashaiban@pratt.edu" target="_blank">ashaiban@pratt.edu</a>, or fork the project at <a href="https://github.com/jaramana/covid-tracker-nyc" target="_blank">GitHub</a>. This needs a lot more work, so any suggestions, contributions, or tips are welcome and invited.</a>
+                </p>
+                <p>Stay safe.</p>
+            </div>
+            <div class="leaflet-sidebar-pane" id="download">
+                <h1 class="leaflet-sidebar-header">COVID Tracker NYC<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <br>
+                <h6>Downloads</h6>
+				<p>Cumulative '<a href="https://github.com/nychealth/coronavirus-data/blob/master/case-hosp-death.csv" target="_blank">case-hosp-death.csv</a>' table from DOHMH:<br> <a href="./download/case-hosp-death_cumulative.csv" target="_blank">case-hosp-death_cumulative.csv</a></p>
+                <br>
+				<p>See <a href="https://github.com/jaramana/covid-tracker-nyc" target="_blank">GitHub</a> for web map files.</p>
+            </div>
+        </div>
+    </div>
+		
+    <div id="map"></div>
+	
+    <div id="container">
+        <a class="ct-btn-scroll ct-js-btn-scroll" style="text-decoration:none; color: black; opacity: 0.7;" href="#section2">
+            <p style="margin-bottom:0; font-weight: bold; ">charts below
+                <br><img alt="Arrow Down Icon" src="down.svg" height="42" width="42"></a>
+        </p>
+    </div>
+	
+</div>
+
+<hr>
+
+<section id="section2">
+
+    <div id="container_up">
+        <a class="ct-btn-scroll ct-js-btn-scroll" style="text-decoration:none; color: black; opacity: 0.7;" href="#home">
+		<img alt="Arrow Down Icon" src="up.svg" height="42" width="42"><br>
+            <p style="margin-top:0; font-weight: bold; ">map above
+                </a>
+        </p>
+    </div>
+
+    <br>
+    <center>
+        <div class="wrapper">
+			<br>
+            <h6>COVID Cases, Hospitilizations, and Deaths</h6>
+            <canvas id="case_hosp_death"></canvas>
+            <br>
+            <hr>
+        </div>
+    </center>
+    <center>
+        <div class="wrapper">
+			<br>
+            <h6>Cases (positive tests)</h6>
+            <canvas id="case_count"></canvas>
+            <br>
+            <hr>
+        </div>
+    </center>
+    <center>
+        <div class="wrapper">
+			<br>		
+            <h6>Hospitalized</h6>
+            <canvas id="hospitalized"></canvas>
+            <br>
+            <hr>
+        </div>
+    </center>
+    <br>
+    <center>
+        <div class="wrapper">
+			<br>		
+            <h6>Deaths</h6>
+            <canvas id="death_count"></canvas>
+            <br>
+            <hr>
+        </div>
+    </center>
+    </body>
+
+
+
+<!-- Leaflet Mustache Popups -->
+<script class="popupTemplate_positive" type="x-tmpl-mustache">
+    <center>
+        <div>
+            <div>
+                <h6>{{neighborhood}} - {{zcta}}</h6></div>
+            <div><b>{{Positive}} Positive Cases ({{positiveperthou}} / 1000)</b></div>
+            <div><b>{{Total}} Total Cases ({{totalperthou}} / 1000)</b></div>
+            <br>
+            <div>Total Population: <b>{{population}}</b></div>
+        </div>
+    </center>
+</script>
+
+<script class="popupTemplate_sdi" type="x-tmpl-mustache">
+    <center>
+        <div>
+            <div>
+                <h6>{{neighborhood}} - {{zcta}}</h6></div>
+            <div>Single Parent Household:<b> {{percnt_singlparntfly}}%</b></div>
+            <div>Black / African-American:<b> {{percnt_black}}%</b></div>
+            <div>High School Drop-out:<b> {{percnt_dropout}}%</b></div>
+            <div>Single Parent Household:<b> {{percnt_hhnocar}}%</b></div>
+            <div>Renter-Occupied:<b> {{percnt_rentoccup}}%</b></div>
+            <div>Crowding:<b> {{percnt_crowding}}%</b></div>
+            <div>Unemployed:<b> {{percnt_unemp}}%</b></div>
+            <div>Hispanic / Latin:<b> {{percnt_hispanic}}%</b></div>
+            <div>Foreign born:<b> {{percnt_frgnborn}}%</b></div>
+            <br>
+            <div>Total Population: <b>{{population}}</b></div>
+        </div>
+    </center>
+</script>
+
+<script class="popupTemplate_SVI2018_theme1" type="x-tmpl-mustache">
+    <center>
+        <div>
+            <div>
+                <h6>Socioeconomic</h6></div>
+            <div>Persons below poverty:<b> {{EP_POV}}%</b></div>
+            <div>Unemployment rate:<b> {{EP_UNEMP}}%</b></div>
+            <div>Per capita income:<b> ${{EP_PCI}}</b></div>
+            <div>No high school diploma (age 25+):<b> {{EP_NOHSDP}}%</b></div>
+            <br>
+            <div>Total Population: <b>{{E_TOTPOP}}</b></div>
+        </div>
+    </center>
+</script>
+
+<script class="popupTemplate_SVI2018_theme2" type="x-tmpl-mustache">
+    <center>
+        <div>
+            <div>
+                <h6>Household Composition & Disability</h6></div>
+            <div>Persons aged 65 and older:<b> {{EP_AGE65}}%</b></div>
+            <div>Persons aged 17 and younger:<b> {{EP_AGE17}}%</b></div>
+            <div>Persons with a disability:<b> {{EP_DISABL}}%</b></div>
+            <div>Single parent households:<b> {{EP_SNGPNT}}%</b></div>
+            <br>
+            <div>Total Population: <b>{{E_TOTPOP}}</b></div>
+        </div>
+    </center>
+</script>
+
+<script class="popupTemplate_SVI2018_theme3" type="x-tmpl-mustache">
+    <center>
+        <div>
+            <div>
+                <h6>Minority Status & Language</h6></div>
+            <div>Minority:<b> {{EP_MINRTY}}%</b></div>
+            <div>Persons who speak English "less than well":<b> {{EP_LIMENG}}%</b></div>
+            <br>
+            <div>Total Population: <b>{{E_TOTPOP}}</b></div>
+        </div>
+    </center>
+</script>
+
+<script class="popupTemplate_SVI2018_theme4" type="x-tmpl-mustache">
+    <center>
+        <div>
+            <div>
+                <h6>Housing Type & Transportation</h6></div>
+            <div>Housing structures with 10 or more units:<b> {{EP_MUNIT}}%</b></div>
+            <div>Mobile homes:<b> {{EP_MOBILE}}%</b></div>
+            <div>Housing with more people than rooms:<b> ${{EP_CROWD}}</b></div>
+            <div>No vehicle:<b> {{EP_NOVEH}}%</b></div>
+            <div>Institutionalized group quarters:<b> {{EP_GROUPQ}}%</b></div>
+            <br>
+            <div>Total Population: <b>{{E_TOTPOP}}</b></div>
+        </div>
+    </center>
+</script>
+
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/leaflet-sidebar-v2@3.1.1/js/leaflet-sidebar.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.4/fetch.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+<script src='./scroll-down.js'></script>
+
+<!-- Data -->
+<script src="./data/covid_nyc.js"></script>
+<script src="./data/ACS2015_zctaallvars.js"></script>
+<script src="./data/SVI2018_NEWYORK_tract_nyc_mod.js"></script>
+<script src="./data/case-hosp-death_cumulative.js"></script>
+
+<!-- Map and Chart Scripts -->
+<script src="./scripts/map.js"></script>
+<script src="./scripts/death_count.js"></script>
+<script src="./scripts/hospitalized.js"></script>
+<script src="./scripts/case_count.js"></script>
+<script src="./scripts/all.js"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129520206-3"></script>
@@ -26,264 +270,5 @@
 
   gtag('config', 'UA-129520206-3');
 </script>
-
-
-
-
-
-<body>
-
-
-
-
-
-<div id="map-wrapper">
-
-
-<!-- partial:index.partial.html -->
-<div id="sidebar" class="leaflet-sidebar collapsed">
-    <!-- Nav tabs -->
-    <div class="leaflet-sidebar-tabs">
-        <ul role="tablist"> <!-- top aligned tabs -->
-   	  <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
-	  <li><a href="#profile" role="tab"><i class="fa fa-info-circle"></i></a></li>
-	  <li><a href="#download" role="tab"><i class="fa fa-arrow-down"></i></a></li>
-        </ul>
-	<!-- bottom aligned tabs -->
-	<ul role="tablist">
-		<li><a href="https://github.com/jaramana/covid-tracker-nyc" target="_blank"><i class="fab fa-github"></i></a></li>
-	</ul>
-    </div>
-  <!-- Tab panes -->
-  <div class="leaflet-sidebar-content">
-    <div class="leaflet-sidebar-pane" id="home">
-      <h1 class="leaflet-sidebar-header">
-        COVID Tracker NYC
-        <span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
-      </h1>
-		<br>
-	  <span id="layercontrol"></span>
-		<script language="Javascript">
-		document.write("<p style='text-align:left;color: #555; padding-left: 10px;'>Last updated " + document.lastModified +"</p>");
-		</script>
-    </div>
-    <div class="leaflet-sidebar-pane" id="profile">
-      <h1 class="leaflet-sidebar-header">COVID Tracker NYC<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-	  <br>
-	  <h6>About</h6>
-	<p>This interactive web map tracks tests for the corona virus disease (COVID-19) in New York City using <a href="https://github.com/nychealth/coronavirus-data" target="_blank">publically available data</a> from the New York City Department of Health and Mental Hygiene (DOHMH).</p>
-	<p>It includes layers from the United States Center for Disease Control's "<a href="https://svi.cdc.gov/index.html" target="_blank">Social Vulnerability Index</a>."</p>
-	<p>This is still a work in progress. Indicators, layers, and methodology are open for scrutiny, and can change. Please submit any comment to <a href = "mailto: ashaiban@pratt.edu" target="_blank">ashaiban@pratt.edu</a>, or fork the project at <a href = "https://github.com/jaramana/covid-tracker-nyc" target="_blank">GitHub</a>. This needs a lot more work, so any suggestions, contributions, or tips are welcome and invited.</a></p>
-	<p>Stay safe.</p>
-    </div>
-    <div class="leaflet-sidebar-pane" id="download">
-      <h1 class="leaflet-sidebar-header">COVID Tracker NYC<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-	  <br>
-	  <h6>Downloads</h6>	  
-	  <p>Coming Soon...</p>
-	  <p>See <a href = "https://github.com/jaramana/covid-tracker-nyc" target="_blank">GitHub</a> for web map files.</p> 
-    </div>
-  </div>
-</div>
-
-
-
-<div id="map"></div>
-
-
-
-
-<div id="container">
-<a class="ct-btn-scroll ct-js-btn-scroll" style="text-decoration:none; color: black; opacity: 0.7;" href="#section2"><p style="margin-bottom:0; font-weight: bold; ">charts below<br><img alt="Arrow Down Icon" src="down.png" height="42" width="42"></a></p>
-</div>
-
-
-</div>
-
-
-<hr>
-
-
-
-<section id="section2">
-<br>
-<center>
-<div class="wrapper">
-<h6>COVID Cases, Hospitilizations, and Deaths</h6>
-<canvas id="case_hosp_death"></canvas>
-</div>
-</center>
-<br>
-<hr>
-
-<br>
-<center>
-<div class="wrapper">
-<h6>Cases (positive tests)</h6>				
-<canvas id="case_count"></canvas>
-</div>
-</center>
-<br>
-<hr>
-
-<br>
-<center>
-<div class="wrapper">
-<h6>Hospitalized</h6>		
-<canvas id="hospitalized"></canvas>
-</div>
-</center>
-<br>
-<hr>	
-
-<br>
-<center>
-<div class="wrapper">
-<h6>Deaths</h6>
-<canvas id="death_count"></canvas>
-</div>
-</center>
-<br>
-
-</body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script class="popupTemplate_positive" type="x-tmpl-mustache">
-<center>
-  <div>
-  	<div><h6>{{neighborhood}} - {{zcta}}</h6></div>
-	<div><b>{{Positive}} Positive Cases ({{positiveperthou}} / 1000)</b></div>
-	<div><b>{{Total}} Total Cases ({{totalperthou}} / 1000)</b></div>
-	<br>
-	<div>Total Population: <b>{{population}}</b></div>
-  </div>
-  </center>
-</script>
-
-<script class="popupTemplate_sdi" type="x-tmpl-mustache">
-<center>
-  <div>
-  	<div><h6>{{neighborhood}} - {{zcta}}</h6></div>
-	<div>Single Parent Household:<b> {{percnt_singlparntfly}}%</b></div>
-	<div>Black / African-American:<b> {{percnt_black}}%</b></div>
-	<div>High School Drop-out:<b> {{percnt_dropout}}%</b></div>
-	<div>Single Parent Household:<b> {{percnt_hhnocar}}%</b></div>
-	<div>Renter-Occupied:<b> {{percnt_rentoccup}}%</b></div>
-	<div>Crowding:<b> {{percnt_crowding}}%</b></div>
-	<div>Unemployed:<b> {{percnt_unemp}}%</b></div>	
-	<div>Hispanic / Latin:<b> {{percnt_hispanic}}%</b></div>
-	<div>Foreign born:<b> {{percnt_frgnborn}}%</b></div>
-	<br>
-	<div>Total Population: <b>{{population}}</b></div>
-  </div>
-  </center>
-</script>
-
-<script class="popupTemplate_SVI2018_theme1" type="x-tmpl-mustache">
-<center>
-  <div>
-   	<div><h6>Socioeconomic</h6></div>
-	<div>Persons below poverty:<b> {{EP_POV}}%</b></div>
-	<div>Unemployment rate:<b> {{EP_UNEMP}}%</b></div>
-	<div>Per capita income:<b> ${{EP_PCI}}</b></div>
-	<div>No high school diploma (age 25+):<b> {{EP_NOHSDP}}%</b></div>
-	<br>
-	<div>Total Population: <b>{{E_TOTPOP}}</b></div>
-  </div>
-  </center>
-</script>
-
-<script class="popupTemplate_SVI2018_theme2" type="x-tmpl-mustache">
-<center>
-  <div>
-   	<div><h6>Household Composition & Disability</h6></div>
-	<div>Persons aged 65 and older:<b> {{EP_AGE65}}%</b></div>
-	<div>Persons aged 17 and younger:<b> {{EP_AGE17}}%</b></div>
-	<div>Persons with a disability:<b> {{EP_DISABL}}%</b></div>
-	<div>Single parent households:<b> {{EP_SNGPNT}}%</b></div>
-	<br>
-	<div>Total Population: <b>{{E_TOTPOP}}</b></div>
-  </div>
-  </center>
-</script>
-
-<script class="popupTemplate_SVI2018_theme3" type="x-tmpl-mustache">
-<center>
-  <div>
-   	<div><h6>Minority Status & Language</h6></div>
-	<div>Minority:<b> {{EP_MINRTY}}%</b></div>
-	<div>Persons who speak English "less than well":<b> {{EP_LIMENG}}%</b></div>
-	<br>
-	<div>Total Population: <b>{{E_TOTPOP}}</b></div>
-  </div>
-  </center>
-</script>
-
-<script class="popupTemplate_SVI2018_theme4" type="x-tmpl-mustache">
-<center>
-  <div>
-   	<div><h6>Housing Type & Transportation</h6></div>
-	<div>Housing structures with 10 or more units:<b> {{EP_MUNIT}}%</b></div>
-	<div>Mobile homes:<b> {{EP_MOBILE}}%</b></div>
-	<div>Housing with more people than rooms:<b> ${{EP_CROWD}}</b></div>
-	<div>No vehicle:<b> {{EP_NOVEH}}%</b></div>
-	<div>Institutionalized group quarters:<b> {{EP_GROUPQ}}%</b></div>
-	<br>
-	<div>Total Population: <b>{{E_TOTPOP}}</b></div>
-  </div>
-  </center>
-</script>
-
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js'></script>
-<script src='https://cdn.jsdelivr.net/npm/leaflet-sidebar-v2@3.1.1/js/leaflet-sidebar.min.js'></script>
-<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.4/fetch.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
-<script src="./plugins/leaflet.groupedlayercontrol.js"></script>
-<script src="./plugins/L.Control.Layers.Tree.js"></script>
-
-<script src="./data/covid_nyc.js"></script>
-
-<script src="./data/ACS2015_zctaallvars.js"></script>
-
-<script src="./data/SVI2018_NEWYORK_tract_nyc_mod.js"></script>
-
-<script src="./script.js"></script>
-
-<script src='./scroll-down.js'></script>
-
-<script src="./data/case-hosp-death_cumulative.js"></script>
-<!--<script src="./data/Facilities_Accessible.js"></script> -->
-<script src="./charts/death_count.js"></script>
-<script src="./charts/hospitalized.js"></script>
-<script src="./charts/case_count.js"></script>
-<script src="./charts/all.js"></script>
-
 
 </html>
