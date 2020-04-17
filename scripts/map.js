@@ -1084,7 +1084,7 @@ map.on('baselayerchange', function (eventLayer) {
 		////healthcare.bringToFront();	
 		//vzcta.bringToFront();		
     }
-    else if  (eventLayer.name === 'Total tests per one thousand') {
+    else if  (eventLayer.name === "Total tests per one thousand<br><br><b>CDC Social Vulnerability Index (<a href='https://svi.cdc.gov/index.html' target=_blank>?</a>)</b>") {
        map.removeControl(currentLegend );
         currentLegend = legend_total_pc;
         legend_total_pc.addTo(map);
