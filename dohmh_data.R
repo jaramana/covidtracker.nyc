@@ -67,7 +67,7 @@ m <- spTransform(m, CRS("+proj=longlat +datum=WGS84 +init=epsg:4269"))
 writeOGR(m, "data/covid_nyc.json", layer="merged", driver="GeoJSON", overwrite_layer=TRUE)
 
 ##Get quantiles for breaks / legend
-quantile(m$Positive, probs = seq(0, 1, .20))
+quantile(m$totalperthou, probs = seq(0, 1, .20))
 
 
 
@@ -95,3 +95,4 @@ write_json(d, "data/case-hosp-death_cumulative.json", pretty = TRUE)
 
 ##Write as csv for public use
 write.csv(d, "download/case-hosp-death_cumulative.csv", row.names = FALSE)
+

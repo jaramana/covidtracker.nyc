@@ -46,7 +46,7 @@ var config = {
       labels: labels,
       datasets: [
 	  {
-         label: 'Total Positive Tests',
+         label: 'Total Positive Cases',
          data: data1,
          borderColor: '#800080',
 		 backgroundColor: "rgba(220,220,220,0.0)",

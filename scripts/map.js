@@ -29,10 +29,10 @@ return d > 96  ? '#ffcc00' :
 // Positive Tests
 // Positive Tests - Color/Breaks
 function getColor_positive(d) {
-    return d > 796 ? '#b30000' :
-        d > 431 ? '#e34a33' :
-        d > 275 ? '#fc8d59' :
-        d > 36 ? '#fdcc8a' :
+    return d > 1027 ? '#b30000' :
+        d > 616 ? '#e34a33' :
+        d > 372 ? '#fc8d59' :
+        d > 104 ? '#fdcc8a' :
         d > 0 ? '#fef0d9' :
         '#ffffff';
 }
@@ -45,8 +45,8 @@ legend_positive.onAdd = function(map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
         labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Positive cases</h6>'],
-        grades = [999999, 796, 431, 275, 36, 0],
-        labels = ["796 +", "431 - 795", "275 - 430", "36 - 274", "1 - 34", "No Positives/Data"];
+        grades = [999999, 1027, 616, 372, 104, 0],
+        labels = ["1027 +", "616 - 1026", "372 - 615", "104 - 371", "1 - 103", "No Positives/Data"];
 
     // loop through our density intervals and generate a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
@@ -66,10 +66,10 @@ legend_positive.onAdd = function(map) {
 // Positive Tests per thousand
 // Positive Tests per thousand - Color/Breaks
 function getColor_positive_pc(d) {
-    return d > 14.7 ? '#b30000' :
-        d > 11.4 ? '#e34a33' :
-        d > 7.8 ? '#fc8d59' :
-        d > 4.7 ? '#fdcc8a' :
+    return d > 18.9 ? '#b30000' :
+        d > 15.4 ? '#e34a33' :
+        d > 10.5 ? '#fc8d59' :
+        d > 7.3 ? '#fdcc8a' :
         d > 0 ? '#fef0d9' :
         '#ffffff';
 }
@@ -82,8 +82,8 @@ legend_positive_pc.onAdd = function(map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
         labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Positive cases<br>per one thousand</h6>'],
-        grades = [999999, 14.7, 11.4, 7.8, 4.7, 0],
-        labels = ["14.7 +", "11.4 - 14.6", "7.8 - 11.3", "4.7 - 7.7", "1 - 4.6", "No Positives/Data"];
+        grades = [999999, 18.9, 15.4, 10.5, 7.3, 0],
+        labels = ["18.9 +", "15.4 - 18.8", "10.5 - 11.2", "7.3 - 10.4", "1 - 7.2", "No Positives/Data"];
 
     // loop through our density intervals and generate a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
@@ -103,10 +103,10 @@ legend_positive_pc.onAdd = function(map) {
 // Total tests
 // Total tests - Color/Breaks
 function getColor_total(d) {
-return d > 1347  ? '#08519c' :
-	   d > 807  ? '#3182bd' :
-	   d > 514  ? '#6baed6' :
-	   d > 101  ? '#bdd7e7' :
+return d > 1835  ? '#08519c' :
+	   d > 1105  ? '#3182bd' :
+	   d > 712  ? '#6baed6' :
+	   d > 250  ? '#bdd7e7' :
 	   d > 0   ? '#eff3ff' :
 				  '#ffffff';
 }
@@ -117,8 +117,8 @@ legend_total.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
 		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Total tests</h6>'],
-		grades = [999999, 1347, 807, 514, 101, 0],
-        labels = ["1347 +", "807 - 1346", "514 - 806", "101 - 513", "1 - 100", "No Tests/Data"]
+		grades = [999999, 1835, 1105, 712, 250, 0],
+        labels = ["1835 +", "1105 - 1834", "712 - 1104", "250 - 711", "1 - 249", "No Tests/Data"]
 		;
 		
     // loop through our density intervals and generate a label with a colored square for each interval
@@ -139,10 +139,10 @@ legend_total.onAdd = function (map) {
 // Total tests per thousand
 // Total tests per thousand - Color/Breaks
 function getColor_total_pc(d) {
-return d > 25.3  ? '#08519c' :
-	   d > 19.3  ? '#3182bd' :
-	   d > 15.3  ? '#6baed6' :
-	   d > 11.5  ? '#bdd7e7' :
+return d > 33  ? '#08519c' :
+	   d > 26.8  ? '#3182bd' :
+	   d > 20.4  ? '#6baed6' :
+	   d > 16.1  ? '#bdd7e7' :
 	   d > 0 ? '#eff3ff' :
 				  '#ffffff';
 }
@@ -152,8 +152,8 @@ legend_total_pc.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
 		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Total tests<br>per one thousand</h6>'],
-		grades = [999999, 25.3, 19.3, 15.3, 11.5, 0],
-        labels = ["25.3 +", "19.3 - 25.2", "15.3 - 19.2", "11.5 - 15.2", "1 - 11.4", "No Tests/Data"]
+		grades = [999999, 33, 26.8, 20.4, 16.1, 0],
+        labels = ["33 +", "26.8 - 32.9", "20.4 - 26.7", "16.1 - 20.3", "1 - 16", "No Tests/Data"]
 		;
 		
     // loop through our density intervals and generate a label with a colored square for each interval

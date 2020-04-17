@@ -38,13 +38,13 @@ var config = {
    data: {
       labels: labels,
       datasets: [{
-         label: 'Daily Positive Tests',
+         label: 'Daily Positive Cases',
          data: data1,
          backgroundColor: '#800080',
          borderColor: '#800080'		 
       },
 	  {
-         label: 'Total Positive Tests',
+         label: 'Total Positive Cases',
          data: data2,
          borderColor: '#800080',
 		 backgroundColor: "rgba(220,220,220,0.0)",
