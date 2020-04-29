@@ -84,6 +84,10 @@ d[is.na(d)] <- 0
 
 ##Rename column header (sometimes DOHMH messes this up)
 d <- rename(d, 'DATE_OF_INTEREST' = 1)
+d <- rename(d, 'NEW_COVID_CASE_COUNT' = 2)
+d <- rename(d, 'HOSPITALIZED_CASE_COUNT' = 3)
+d <- rename(d, 'DEATH_COUNT' = 4)
+
 
 ##Create new columns with cumulative sums
 d[,"NEW_COVID_CASE_COUNT_CUM"] <- cumsum(d$NEW_COVID_CASE_COUNT)
