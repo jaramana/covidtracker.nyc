@@ -197,7 +197,8 @@
     <center>
         <div>
             <div>
-                <h6>{{neighborhood}}, {{borough}} - {{zcta}}</h6></div>
+                <h6 style="margin-bottom:0px">{{neighborhood}}, {{borough}}</h6></div>
+            <h6 style="margin-top:0px; margin-bottom:12px">{{zcta}}</h6></div>
             <div>Single Parent Household:<b> {{percnt_singlparntfly}}%</b></div>
             <div>Black / African-American:<b> {{percnt_black}}%</b></div>
             <div>High School Drop-out:<b> {{percnt_dropout}}%</b></div>
@@ -217,7 +218,9 @@
     <center>
         <div>
             <div>
-                <h6>Socioeconomic</h6></div>
+            <h6 style="margin-bottom:0px">{{neighborhood}}, {{borough}}</h6></div>
+            <h6 style="margin-top:0px; margin-bottom:12px">{{zcta}}</h6></div>
+            <div><h6><b><i>Socioeconomic Vulnerability</i></b><h6></div>
             <div>Persons below poverty:<b> {{EP_POV}}%</b></div>
             <div>Unemployment rate:<b> {{EP_UNEMP}}%</b></div>
             <div>Per capita income:<b> ${{EP_PCI}}</b></div>
@@ -232,7 +235,9 @@
     <center>
         <div>
             <div>
-                <h6>Household Composition & Disability</h6></div>
+	        <h6 style="margin-bottom:0px">{{neighborhood}}, {{borough}}</h6></div>
+            <h6 style="margin-top:0px; margin-bottom:12px">{{zcta}}</h6></div>
+            <div><h7><b><i>Household Composition & Disability Vulnerability</i></b><h7></div>
             <div>Persons aged 65 and older:<b> {{EP_AGE65}}%</b></div>
             <div>Persons aged 17 and younger:<b> {{EP_AGE17}}%</b></div>
             <div>Persons with a disability:<b> {{EP_DISABL}}%</b></div>
@@ -247,7 +252,9 @@
     <center>
         <div>
             <div>
-                <h6>Minority Status & Language</h6></div>
+	        <h6 style="margin-bottom:0px">{{neighborhood}}, {{borough}}</h6></div>
+            <h6 style="margin-top:0px; margin-bottom:12px">{{zcta}}</h6></div>
+            <div><h7><b><i>Minority Status & Language Vulnerability</i></b><h7></div>
             <div>Minority:<b> {{EP_MINRTY}}%</b></div>
             <div>Persons who speak English "less than well":<b> {{EP_LIMENG}}%</b></div>
             <br>
@@ -260,7 +267,9 @@
     <center>
         <div>
             <div>
-                <h6>Housing Type & Transportation</h6></div>
+	        <h6 style="margin-bottom:0px">{{neighborhood}}, {{borough}}</h6></div>
+            <h6 style="margin-top:0px; margin-bottom:12px">{{zcta}}</h6></div>
+            <div><h7><b><i>Housing Type & Transportation Vulnerability</i></b><h7></div>
             <div>Housing structures with 10 or more units:<b> {{EP_MUNIT}}%</b></div>
             <div>Mobile homes:<b> {{EP_MOBILE}}%</b></div>
             <div>Housing with more people than rooms:<b> ${{EP_CROWD}}</b></div>
@@ -290,6 +299,7 @@
 <script src="./data/covid_nyc.js"></script>
 <script src="./data/ACS2015_zctaallvars.js"></script>
 <script src="./data/SVI2018_NEWYORK_tract_nyc_mod.js"></script>
+<script src="./data/SVI2018_NEWYORK_ZCTA_CW.js"></script>
 <script src="./data/case-hosp-death_cumulative.js"></script>
 
 <!-- Map and Chart Scripts -->

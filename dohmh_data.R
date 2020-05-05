@@ -17,7 +17,7 @@ urlfile="https://raw.githubusercontent.com/nychealth/coronavirus-data/master/tes
 ##Load data
 p <- shapefile("data/raw/nyu_2451_34509_filtered/nyu_2451_34509_filtered")
 d <- read_csv(url(urlfile))
-c <- read_csv("data/raw/ACS2015_zctaallvars_modified.csv")
+c <- read_csv("data/raw/cdc_svi_zcta_crosswalk.csv")
 n <- read_csv("data/raw/zcta_neighborhood_names.csv")
 
 
