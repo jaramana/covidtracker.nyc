@@ -36,6 +36,9 @@ d <- rename(d, 'zcta' = 1)
 d <- rename(d, 'Positive' = 2)
 d <- rename(d, 'Total' = 3)
 
+c <- rename(c, 'population' = 4)
+
+
 ##Merge Zip Code shapefile with Testing data (DOHMH)
 m <- merge(p, d, by='zcta')
 
