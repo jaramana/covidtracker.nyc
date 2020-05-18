@@ -25,12 +25,33 @@ var config = {
 			position: 'bottom',
 			align: 'center',
 			fullWidth: 'false',
+			onClick: null,
         },
     scales: {
         yAxes: [{
+			id: 'A',
             display: true,
+            position: 'right',
+            gridLines:{
+                display: false
+			},
+			scaleLabel: {
+				display: true,
+				labelString: 'Daily Hospitalized'
+			},
             ticks: {
-                suggestedMin: 0,
+				suggestedMin: 0,
+            }
+        }, {
+			id: 'B',
+            display: true,
+            position: 'left',
+			scaleLabel: {
+				display: true,
+				labelString: 'Total Hospitalized'
+			},
+            ticks: {
+				suggestedMin: 0		
             }
         }]
     }
@@ -40,15 +61,17 @@ var config = {
       datasets: [{
          label: 'Daily Hospitalized Count',
          data: data1,
-         backgroundColor: '#FFA500',
-		 borderColor: '#FFA500'		 
+         backgroundColor: "rgba(255,165,0,0.3)",
+		 borderColor: '#FFA500',
+         yAxisID: 'A'		 
       },
 	  {
          label: 'Total Hospitalized',
          data: data2,
          borderColor: '#FFA500',
 		 backgroundColor: "rgba(220,220,220,0.0)",
-		 type: 'line'
+		 type: 'line',
+         yAxisID: 'B'
       }]
    }
 };

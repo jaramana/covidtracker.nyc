@@ -32,6 +32,7 @@ var config = {
 			position: 'bottom',
 			align: 'center',
 			fullWidth: 'false',
+			onClick: null,
         },
     scales: {
         yAxes: [{

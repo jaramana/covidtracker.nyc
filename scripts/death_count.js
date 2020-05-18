@@ -25,12 +25,33 @@ var config = {
 			position: 'bottom',
 			align: 'center',
 			fullWidth: 'false',
+			onClick: null,
         },
     scales: {
         yAxes: [{
+			id: 'A',
             display: true,
+            position: 'right',
+            gridLines:{
+                display: false
+			},
+			scaleLabel: {
+				display: true,
+				labelString: 'Daily Deaths'
+			},
             ticks: {
-                suggestedMin: 0,
+				suggestedMin: 0,
+            }
+        }, {
+			id: 'B',
+            display: true,
+            position: 'left',
+			scaleLabel: {
+				display: true,
+				labelString: 'Total Deaths'
+			},			
+            ticks: {
+				suggestedMin: 0		
             }
         }]
     }
@@ -40,15 +61,17 @@ var config = {
       datasets: [{
          label: 'Daily Deaths',
          data: data1,
-         backgroundColor: '#ff0000',
-         borderColor: '#ff0000'
+         backgroundColor: "rgba(255,0,0,0.3)",
+         borderColor: '#ff0000',
+         yAxisID: 'A'
       },
 	  {
          label: 'Total Death',
          data: data2,
          borderColor: '#ff0000',
 		 backgroundColor: "rgba(220,220,220,0.0)",
-		 type: 'line'
+		 type: 'line',
+         yAxisID: 'B'
       }]
    }
 };

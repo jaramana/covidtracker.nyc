@@ -25,14 +25,39 @@ var config = {
 			position: 'bottom',
 			align: 'center',
 			fullWidth: 'false',
+			onClick: null,
         },
     scales: {
         yAxes: [{
+			id: 'A',
             display: true,
+            position: 'right',
+            gridLines:{
+                display: false
+			},
+			scaleLabel: {
+				display: true,
+				labelString: 'Daily Cases'
+			},
             ticks: {
-                suggestedMin: 0,
+				suggestedMin: 0,
+            }
+        }, {
+			id: 'B',
+            display: true,
+            position: 'left',	
+			scaleLabel: {
+				display: true,
+				labelString: 'Total Cases'
+			},
+            ticks: {
+				suggestedMin: 0		
             }
         }]
+		
+
+		
+		
     }
    },
    data: {
@@ -40,15 +65,17 @@ var config = {
       datasets: [{
          label: 'Daily Positive Cases',
          data: data1,
-         backgroundColor: '#800080',
-         borderColor: '#800080'		 
+         backgroundColor: "rgba(128,0 ,128,0.3)",
+         borderColor: '#800080',
+         yAxisID: 'A'
       },
 	  {
          label: 'Total Positive Cases',
          data: data2,
          borderColor: '#800080',
 		 backgroundColor: "rgba(220,220,220,0.0)",
-		 type: 'line'
+		 type: 'line',
+         yAxisID: 'B'
       }]
    }
 };
