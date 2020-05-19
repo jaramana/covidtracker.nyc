@@ -1,7 +1,7 @@
 # covid-tracker-nyc
 
 ## About
-This interactive web map tracks tests for the corona virus disease (COVID-19) in New York City using publically available data from the New York City Department of Health and Mental Hygiene (DOHMH).
+This interactive web map tracks tests for the corona virus disease (COVID-19) in New York City using publicly available data from the New York City Department of Health and Mental Hygiene (DOHMH).
 
 It includes layers from the United States Center for Disease Control's "Social Vulnerability Index."
 
