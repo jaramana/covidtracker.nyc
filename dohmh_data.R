@@ -43,7 +43,7 @@ c <- rename(c, 'population' = 4)
 m <- merge(p, d, by='zcta')
 
 ##Merge Spatial data with neighborhood names
-m <- merge(m, n, by='zcta')
+# m <- merge(m, n, by='zcta') For some reason I created this at one point, doesn't seem necessary right now.
 
 ##Merge Spatial data with census data
 m <- merge(m, c, by='zcta')
