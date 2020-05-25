@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>COVID Tracker NYC</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.2/leaflet.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+
+
+
+
+		<link rel="stylesheet" href="./leaflet/leaflet.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+		<link rel="stylesheet" href="./plugins/leaflet.groupedlayercontrol.css" />
+		<link rel="icon" href="grid.ico" type="image/x-icon" />
+		<!--grid by Danil Polshin from the Noun Project-->
+
+		<link rel="shortcut icon" href="images/grid.ico" type="image/x-icon" />
+
+
+		
+		
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>COVID</strong> Tracker NYC</a>
+									<ul class="icons">
+	
+										Positive Cases: <li><b><div id="case_count_a"></div></b></li>
+										Hospitalized: <li><b><div id="hospitalized_a"></div></b></li>
+										Deaths: <li><b><div id="death_count_a"></div></b></li>
+
+									<!--
+										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+									</ul> 
+									-->
+								</header>
+
+							<!-- Content -->
+												<section>
+													<header class="main">
+														<h1>Charts</h1>
+													</header>
+
+						<center>
+								<br>
+								<h2>COVID Cases, Hospitilizations, and Deaths</h2>
+								<canvas id="case_hosp_death"></canvas>
+								<br>
+								<hr>
+						</center>
+						<center>
+								<br>
+								<h2>Positive Cases</h2>
+								<canvas id="case_count"></canvas>
+								<br>
+								<hr>
+						</center>
+						<center>
+								<br>
+								<h2>Hospitalized</h2>
+								<canvas id="hospitalized"></canvas>
+								<br>
+								<hr>
+						</center>
+						<br>
+						<center>
+								<br>
+								<h2>Deaths</h2>
+								<canvas id="death_count"></canvas>
+								<br>
+								<hr>
+						</center>
+
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Map</a></li>
+										<li><a href="charts.html">Charts</a></li>
+										<li><a href="about.html">About</a></li>
+										<li><a href="legacy/index.html" target="_blank">Legacy</a></li>
+									</ul>
+								</nav>
+							<!-- Footer -->
+								<footer id="footer">
+										<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="mailto:ashaiban@pratt.edu">ashaiban@pratt.edu</a></li>
+										<li class="icon brands fa-github"><a href="https://github.com/jaramana/covid-tracker-nyc" target="_blank">/jaramana/covid-tracker-nyc</a></li>
+									</ul>
+									    <p class="copyright">covid-tracker-nyc is released under a Creative Commons Attribution 4.0 International License.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.2/leaflet.js"></script>
+		
+			<script src="choropleth.js"></script>
+			<script src="demo.js"></script>
+
+
+
+
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/leaflet-sidebar-v2@3.1.1/js/leaflet-sidebar.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.4/fetch.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src='./plugins/scroll-down.js'></script>
+<script src="./plugins/leaflet.groupedlayercontrol.js"></script>
+
+<!-- Data -->
+<script src="./map_files/data/covid_nyc.js"></script>
+<script src="./map_files/data/ACS2015_zctaallvars.js"></script>
+<script src="./map_files/data/SVI2018_NEWYORK_tract_nyc_mod.js"></script>
+<script src="./map_files/data/SVI2018_NEWYORK_ZCTA_CW.js"></script>
+<script src="./map_files/data/case-hosp-death_cumulative.js"></script>
+
+<!-- Map and Chart Scripts -->
+<script src="./map_files/scripts/map.js"></script>
+<script src="./map_files/scripts/death_count.js"></script>
+<script src="./map_files/scripts/hospitalized.js"></script>
+<script src="./map_files/scripts/case_count.js"></script>
+<script src="./map_files/scripts/all.js"></script>
+<script src="./map_files/scripts/array_print.js"></script>
+		
+		
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.2/leaflet.js"></script>
+
+
+
+
+
+
+	</body>
+</html>
