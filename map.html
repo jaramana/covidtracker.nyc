@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>COVID Tracker NYC</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="./map_files/leaflet/leaflet.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+		
+		<link rel="stylesheet" href="./map_files/styles.css">
+
+
+	</head>
+
+										<div id="map" style="height: 100vh;"></div>
+<script>									
+// Load map
+var map = L.map('map', mapOptions);
+
+
+<!-- Leaflet Mustache Popups -->
+<script class="popupTemplate_positive" type="x-tmpl-mustache">
+    <center>
+        <div>
+            <div>
+	        <h6 style="margin-bottom:0px; font-size: 1em; font-weight: bolder">{{neighborhood}}, {{borough}}</h6></div>
+            <h6 style="margin-top:0px; margin-bottom:12px; font-size: 1em; font-weight: bolder">{{zcta}}</h6></div>
+        <div><b>{{Positive}} Positive Cases ({{positiveperthou}} / 1000 residents)</b></div>
+        <div><b>{{Total}} Total Cases ({{totalperthou}} / 1000 residents)</b></div>
+        <br>
+        <div>Total Population: <b>{{population}}</b></div>
+        </div>
+    </center>
+</script>
+
+<script class="popupTemplate_sdi" type="x-tmpl-mustache">
+    <center>
+        <div>
+            <div>
+	        <h6 style="margin-bottom:0px; font-size: 1em; font-weight: bolder">{{neighborhood}}, {{borough}}</h6></div>
+            <h6 style="margin-top:0px; margin-bottom:12px; font-size: 1em; font-weight: bolder">{{zcta}}</h6></div>
+            <div>Single Parent Household:<b> {{percnt_singlparntfly}}%</b></div>
+            <div>Black / African-American:<b> {{percnt_black}}%</b></div>
+            <div>High School Drop-out:<b> {{percnt_dropout}}%</b></div>
+            <div>Single Parent Household:<b> {{percnt_hhnocar}}%</b></div>
+            <div>Renter-Occupied:<b> {{percnt_rentoccup}}%</b></div>
+            <div>Crowding:<b> {{percnt_crowding}}%</b></div>
+            <div>Unemployed:<b> {{percnt_unemp}}%</b></div>
+            <div>Hispanic / Latin:<b> {{percnt_hispanic}}%</b></div>
+            <div>Foreign born:<b> {{percnt_frgnborn}}%</b></div>
+            <br>
+            <div>Total Population: <b>{{population}}</b></div>
+        </div>
+    </center>
+</script>
+
+<script class="popupTemplate_SVI2018_theme1" type="x-tmpl-mustache">
+    <center>
+        <div>
+            <div>
+	        <h6 style="margin-bottom:0px; font-size: 1em; font-weight: bolder">{{neighborhood}}, {{borough}}</h6></div>
+            <h6 style="margin-top:0px; margin-bottom:12px; font-size: 1em; font-weight: bolder">{{zcta}}</h6></div>
+            <div><h6><b><i>Socioeconomic Vulnerability</i></b><h6></div>
+            <div>Persons below poverty:<b> {{EP_POV}}%</b></div>
+            <div>Unemployment rate:<b> {{EP_UNEMP}}%</b></div>
+            <div>Per capita income:<b> ${{EP_PCI}}</b></div>
+            <div>No high school diploma (age 25+):<b> {{EP_NOHSDP}}%</b></div>
+            <br>
+            <div>Total Population: <b>{{E_TOTPOP}}</b></div>
+        </div>
+    </center>
+</script>
+
+<script class="popupTemplate_SVI2018_theme2" type="x-tmpl-mustache">
+    <center>
+        <div>
+            <div>
+	        <h6 style="margin-bottom:0px; font-size: 1em; font-weight: bolder">{{neighborhood}}, {{borough}}</h6></div>
+            <h6 style="margin-top:0px; margin-bottom:12px; font-size: 1em; font-weight: bolder">{{zcta}}</h6></div>
+            <div><h7><b><i>Household Composition & Disability Vulnerability</i></b><h7></div>
+            <div>Persons aged 65 and older:<b> {{EP_AGE65}}%</b></div>
+            <div>Persons aged 17 and younger:<b> {{EP_AGE17}}%</b></div>
+            <div>Persons with a disability:<b> {{EP_DISABL}}%</b></div>
+            <div>Single parent households:<b> {{EP_SNGPNT}}%</b></div>
+            <br>
+            <div>Total Population: <b>{{E_TOTPOP}}</b></div>
+        </div>
+    </center>
+</script>
+
+<script class="popupTemplate_SVI2018_theme3" type="x-tmpl-mustache">
+    <center>
+        <div>
+            <div>
+	        <h6 style="margin-bottom:0px; font-size: 1em; font-weight: bolder">{{neighborhood}}, {{borough}}</h6></div>
+            <h6 style="margin-top:0px; margin-bottom:12px; font-size: 1em; font-weight: bolder">{{zcta}}</h6></div>
+            <div><h7><b><i>Minority Status & Language Vulnerability</i></b><h7></div>
+            <div>Minority:<b> {{EP_MINRTY}}%</b></div>
+            <div>Persons who speak English "less than well":<b> {{EP_LIMENG}}%</b></div>
+            <br>
+            <div>Total Population: <b>{{E_TOTPOP}}</b></div>
+        </div>
+    </center>
+</script>
+
+<script class="popupTemplate_SVI2018_theme4" type="x-tmpl-mustache">
+    <center>
+        <div>
+            <div>
+	        <h6 style="margin-bottom:0px; font-size: 1em; font-weight: bolder">{{neighborhood}}, {{borough}}</h6></div>
+            <h6 style="margin-top:0px; margin-bottom:12px; font-size: 1em; font-weight: bolder">{{zcta}}</h6></div>
+            <div><h7><b><i>Housing Type & Transportation Vulnerability</i></b><h7></div>
+            <div>Housing structures with 10 or more units:<b> {{EP_MUNIT}}%</b></div>
+            <div>Mobile homes:<b> {{EP_MOBILE}}%</b></div>
+            <div>Housing with more people than rooms:<b> ${{EP_CROWD}}</b></div>
+            <div>No vehicle:<b> {{EP_NOVEH}}%</b></div>
+            <div>Institutionalized group quarters:<b> {{EP_GROUPQ}}%</b></div>
+            <br>
+            <div>Total Population: <b>{{E_TOTPOP}}</b></div>
+        </div>
+    </center>
+</script>
+</script>
+
+
+
+								</section>
+				
+
+
+						</div>
+					</div>
+		<!-- Scripts -->
+		
+		
+		
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/leaflet-sidebar-v2@3.1.1/js/leaflet-sidebar.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.4/fetch.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src='./plugins/scroll-down.js'></script>
+<script src="./plugins/leaflet.groupedlayercontrol.js"></script>
+
+<!-- Data -->
+<script src="./map_files/data/covid_nyc.js"></script>
+<script src="./map_files/data/ACS2015_zctaallvars.js"></script>
+<script src="./map_files/data/SVI2018_NEWYORK_tract_nyc_mod.js"></script>
+<script src="./map_files/data/SVI2018_NEWYORK_ZCTA_CW.js"></script>
+<script src="./map_files/data/case-hosp-death_cumulative.js"></script>
+
+<!-- Map and Chart Scripts -->
+<script src="./map_files/scripts/map.js"></script>
+<script src="./map_files/scripts/death_count.js"></script>
+<script src="./map_files/scripts/hospitalized.js"></script>
+<script src="./map_files/scripts/case_count.js"></script>
+<script src="./map_files/scripts/all.js"></script>
+<script src="./map_files/scripts/array_print.js"></script>
+		
+		
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.2/leaflet.js"></script>
+		
+
+			
+			
+			
+
+	</body>
+</html>

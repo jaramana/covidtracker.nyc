@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>COVID Tracker NYC</title>
+		<title>covidtracker.nyc</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -14,9 +14,40 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 		
 		<link rel="stylesheet" href="./map_files/styles.css">
-
-
 	</head>
+	
+<!-- SEO -->
+<meta name="description" content="covidtracker.nyc maps and charts COVID-19 Cases in New York City using publicly available data from the NYC Department of Mental Health and Hygiene.">
+<meta property="og:type" content="visualization" />
+<meta property="og:title" content="covidtracker.nyc" />
+<meta property="og:description" content="covidtracker.nyc maps and charts COVID-19 Cases in New York City using publically available data from the NYC Department of Mental Health and Hygiene." />
+<meta name="twitter:site" content="@covidtracker.nyc" />
+<meta name="twitter:title" content="covidtracker.nyc" />
+<meta name="twitter:description" content="covidtracker.nyc maps and charts COVID-19 Cases in New York City using publically available data from the NYC Department of Mental Health and Hygiene." />
+<meta name="twitter:url" content="covidtracker.nyc" />
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" CONTENT="-1">	
+	
+	
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129520206-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-129520206-3');
+</script>
+
+
+
+
 	<body class="is-preload">
 
 
@@ -38,7 +69,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="index.html" class="logo"><strong>COVID</strong> Tracker NYC</a>
+									<a href="index.html" class="logo"><strong>covid</strong>tracker.nyc</a>
 									<ul class="icons">
 	
 										Positive Cases: <li><b><div id="case_count_a"></div></b></li>
@@ -59,8 +90,11 @@
 									<header class="main">
 										<h1>Map</h1>
 									</header>
+
 										<div id="map" style="height: 70vh;"></div>
-										
+								
+
+								
 
 
 <!-- Leaflet Mustache Popups -->
@@ -68,8 +102,8 @@
     <center>
         <div>
             <div>
-	        <h6 style="margin-bottom:0px">{{neighborhood}}, {{borough}}</h6></div>
-            <h6 style="margin-top:0px; margin-bottom:12px">{{zcta}}</h6></div>
+	        <h6 style="margin-bottom:0px; font-size: 1em; font-weight: bolder">{{neighborhood}}, {{borough}}</h6></div>
+            <h6 style="margin-top:0px; margin-bottom:12px; font-size: 1em; font-weight: bolder">{{zcta}}</h6></div>
         <div><b>{{Positive}} Positive Cases ({{positiveperthou}} / 1000 residents)</b></div>
         <div><b>{{Total}} Total Cases ({{totalperthou}} / 1000 residents)</b></div>
         <br>
@@ -82,8 +116,8 @@
     <center>
         <div>
             <div>
-	        <h6 style="margin-bottom:0px">{{neighborhood}}, {{borough}}</h6></div>
-            <h6 style="margin-top:0px; margin-bottom:12px">{{zcta}}</h6></div>
+	        <h6 style="margin-bottom:0px; font-size: 1em; font-weight: bolder">{{neighborhood}}, {{borough}}</h6></div>
+            <h6 style="margin-top:0px; margin-bottom:12px; font-size: 1em; font-weight: bolder">{{zcta}}</h6></div>
             <div>Single Parent Household:<b> {{percnt_singlparntfly}}%</b></div>
             <div>Black / African-American:<b> {{percnt_black}}%</b></div>
             <div>High School Drop-out:<b> {{percnt_dropout}}%</b></div>
@@ -103,8 +137,8 @@
     <center>
         <div>
             <div>
-	        <h6 style="margin-bottom:0px">{{neighborhood}}, {{borough}}</h6></div>
-            <h6 style="margin-top:0px; margin-bottom:12px">{{zcta}}</h6></div>
+	        <h6 style="margin-bottom:0px; font-size: 1em; font-weight: bolder">{{neighborhood}}, {{borough}}</h6></div>
+            <h6 style="margin-top:0px; margin-bottom:12px; font-size: 1em; font-weight: bolder">{{zcta}}</h6></div>
             <div><h6><b><i>Socioeconomic Vulnerability</i></b><h6></div>
             <div>Persons below poverty:<b> {{EP_POV}}%</b></div>
             <div>Unemployment rate:<b> {{EP_UNEMP}}%</b></div>
@@ -120,8 +154,8 @@
     <center>
         <div>
             <div>
-	        <h6 style="margin-bottom:0px">{{neighborhood}}, {{borough}}</h6></div>
-            <h6 style="margin-top:0px; margin-bottom:12px">{{zcta}}</h6></div>
+	        <h6 style="margin-bottom:0px; font-size: 1em; font-weight: bolder">{{neighborhood}}, {{borough}}</h6></div>
+            <h6 style="margin-top:0px; margin-bottom:12px; font-size: 1em; font-weight: bolder">{{zcta}}</h6></div>
             <div><h7><b><i>Household Composition & Disability Vulnerability</i></b><h7></div>
             <div>Persons aged 65 and older:<b> {{EP_AGE65}}%</b></div>
             <div>Persons aged 17 and younger:<b> {{EP_AGE17}}%</b></div>
@@ -137,8 +171,8 @@
     <center>
         <div>
             <div>
-	        <h6 style="margin-bottom:0px">{{neighborhood}}, {{borough}}</h6></div>
-            <h6 style="margin-top:0px; margin-bottom:12px">{{zcta}}</h6></div>
+	        <h6 style="margin-bottom:0px; font-size: 1em; font-weight: bolder">{{neighborhood}}, {{borough}}</h6></div>
+            <h6 style="margin-top:0px; margin-bottom:12px; font-size: 1em; font-weight: bolder">{{zcta}}</h6></div>
             <div><h7><b><i>Minority Status & Language Vulnerability</i></b><h7></div>
             <div>Minority:<b> {{EP_MINRTY}}%</b></div>
             <div>Persons who speak English "less than well":<b> {{EP_LIMENG}}%</b></div>
@@ -152,8 +186,8 @@
     <center>
         <div>
             <div>
-	        <h6 style="margin-bottom:0px">{{neighborhood}}, {{borough}}</h6></div>
-            <h6 style="margin-top:0px; margin-bottom:12px">{{zcta}}</h6></div>
+	        <h6 style="margin-bottom:0px; font-size: 1em; font-weight: bolder">{{neighborhood}}, {{borough}}</h6></div>
+            <h6 style="margin-top:0px; margin-bottom:12px; font-size: 1em; font-weight: bolder">{{zcta}}</h6></div>
             <div><h7><b><i>Housing Type & Transportation Vulnerability</i></b><h7></div>
             <div>Housing structures with 10 or more units:<b> {{EP_MUNIT}}%</b></div>
             <div>Mobile homes:<b> {{EP_MOBILE}}%</b></div>
@@ -198,9 +232,12 @@
 								<footer id="footer">
 										<ul class="contact">
 										<li class="icon solid fa-envelope"><a href="mailto:ashaiban@pratt.edu">ashaiban@pratt.edu</a></li>
-										<li class="icon brands fa-github"><a href="https://github.com/jaramana/covid-tracker-nyc" target="_blank">/jaramana/covid-tracker-nyc</a></li>
+										<li class="icon brands fa-github"><a href="https://github.com/jaramana/covidtracker.nyc" target="_blank">/jaramana/covidtracker.nyc</a></li>
 									</ul>
-									    <p class="copyright">covid-tracker-nyc is released under a Creative Commons Attribution 4.0 International License.</p>
+									    <p class="copyright">covidtracker.nyc is released under a Creative Commons Attribution 4.0 International License.</p>
+										                    <script language="Javascript">
+                        document.write("<p class='copyright'>Last updated " + document.lastModified + "</p>");
+                    </script>
 								</footer>
 
 						</div>
