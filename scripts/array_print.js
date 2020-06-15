@@ -8,11 +8,11 @@ var settings = {
 $.ajax(settings).done(function(response) {
     console.log(response);
 
-    var case_count_a = case_hosp_death_cumulative.jsonarray[99].NEW_COVID_CASE_COUNT_CUM;
+    var case_count_a = case_hosp_death_cumulative.jsonarray[106].NEW_COVID_CASE_COUNT_CUM;
     $("#case_count_a").append(case_count_a);
-    var hospitalized_a = case_hosp_death_cumulative.jsonarray[99].HOSPITALIZED_CASE_COUNT_CUM;
+    var hospitalized_a = case_hosp_death_cumulative.jsonarray[106].HOSPITALIZED_CASE_COUNT_CUM;
     $("#hospitalized_a").append(hospitalized_a);
-    var death_count_a = case_hosp_death_cumulative.jsonarray[99].DEATH_COUNT_CUM;
+    var death_count_a = case_hosp_death_cumulative.jsonarray[106].DEATH_COUNT_CUM;
     $("#death_count_a").append(death_count_a);
 
 });
