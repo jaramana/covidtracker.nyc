@@ -102,12 +102,16 @@
     <center>
         <div>
             <div>
-	        <h6 style="margin-bottom:0px; font-size: 1em; font-weight: bolder">{{neighborhood}}, {{borough}}</h6></div>
+	        <h6 style="margin-bottom:0px; font-size: 1em; font-weight: bolder">{{NEIGHBORHOOD_NAME}}, {{BOROUGH_GROUP}}</h6></div>
             <h6 style="margin-top:0px; margin-bottom:12px; font-size: 1em; font-weight: bolder">{{zcta}}</h6></div>
-        <div><b>{{Positive}} Positive Cases ({{positiveperthou}} / 1000 residents)</b></div>
-        <div><b>{{Total}} Total Cases ({{totalperthou}} / 1000 residents)</b></div>
-        <br>
-        <div>Total Population: <b>{{population}}</b></div>
+        <div><b>Cases: {{COVID_CASE_COUNT}}</b></div>
+        <div><b>Case Rate: {{COVID_CASE_RATE}}</b></div>
+        <div><b>Deaths: {{COVID_DEATH_COUNT}}</b></div>
+        <div><b>Death Rate: {{COVID_DEATH_RATE}}</b></div>
+		<div><b>Percent Positive: {{PERCENT_POSITIVE}}</b></div>
+		<div><b>Total Tests: {{TOTAL_COVID_TESTS}}</b></div>        
+		<br>
+        <div>Total Population: <b>{{POP_DENOMINATOR}}</b></div>
         </div>
     </center>
 </script>
