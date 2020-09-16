@@ -29,10 +29,10 @@ return d > 96  ? '#ffcc00' :
 // Positive Tests
 // Positive Tests - Color/Breaks
 function getColor_positive(d) {
-    return d > 1847 ? '#7a0177' :
-        d > 1132 ? '#c51b8a' :
-        d > 644 ? '#f768a1' :
-        d > 173 ? '#fbb4b9' :
+    return d > 1631 ? '#7a0177' :
+        d > 1003 ? '#c51b8a' :
+        d > 578 ? '#f768a1' :
+        d > 147 ? '#fbb4b9' :
         d > 0 ? '#feebe2' :
         '#ffffff00';
 }
@@ -44,9 +44,9 @@ var legend_positive = L.control({
 legend_positive.onAdd = function(map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
-        labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Cases</h6>'],
-        grades = [999999, 1847, 1132, 644, 173, 0],
-        labels = ["1847 +", "1132 - 1847", "644 - 1132", "173 - 644", "1 - 173", "No Positives/Data"];
+        labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Positive cases</h6>'],
+        grades = [999999, 1631, 1003, 578, 147, 0],
+        labels = ["1631 +", "1003 - 1630", "578 - 1002", "147 - 577", "1 - 146", "No Positives/Data"];
 
     // loop through our density intervals and generate a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
@@ -66,10 +66,10 @@ legend_positive.onAdd = function(map) {
 // Positive Tests per thousand
 // Positive Tests per thousand - Color/Breaks
 function getColor_positive_pc(d) {
-    return d > 3211 ? '#7a0177' :
-        d > 2745 ? '#c51b8a' :
-        d > 1926 ? '#f768a1' :
-        d > 1080 ? '#fbb4b9' :
+    return d > 29.21 ? '#7a0177' :
+        d > 24.52 ? '#c51b8a' :
+        d > 16.67 ? '#f768a1' :
+        d > 9.45 ? '#fbb4b9' :
         d > 0 ? '#feebe2' :
         '#ffffff00';
 }
@@ -81,9 +81,9 @@ var legend_positive_pc = L.control({
 legend_positive_pc.onAdd = function(map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
-        labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Case Rate</h6>'],
-        grades = [999999, 3211, 2745, 1926, 1080, 0],
-        labels = ["3211 +", "2745 - 3211", "1926 - 2745", "1080 - 1926", "1 - 1080", "No Positives/Data"];
+        labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Positive cases<br>per one thousand</h6>'],
+        grades = [999999, 29.21, 24.52, 16.67, 9.45, 0],
+        labels = ["29.21 +", "24.52 - 29.20", "16.67 - 24.51", "9.45 - 16.66", "1 - 9.44", "No Positives/Data"];
 
     // loop through our density intervals and generate a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
@@ -100,125 +100,13 @@ legend_positive_pc.onAdd = function(map) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-// death Tests
-// death Tests - Color/Breaks
-function getColor_death(d) {
-    return d > 164 ? '#7a0177' :
-        d > 97 ? '#c51b8a' :
-        d > 47 ? '#f768a1' :
-        d > 9 ? '#fbb4b9' :
-        d > 0 ? '#feebe2' :
-        '#ffffff00';
-}
-
-// death Tests - Legend
-var legend_death = L.control({
-    position: "bottomright"
-});
-legend_death.onAdd = function(map) {
-
-    var div = L.DomUtil.create('div', 'info legend'),
-        labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Deaths</h6>'],
-        grades = [999999, 164, 97, 47, 9, 0],
-        labels = ["164 +", "97 - 164", "47 - 97", "9 - 47", "1 - 9", "No deaths/Data"];
-
-    // loop through our density intervals and generate a label with a colored square for each interval
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            labels_title.push(
-                '<i style="background:' + getColor_death(grades[i]) + '"></i>' +
-                (labels[i] ? labels[i] + '<p style="text-align:left;font-size:12px;margin-top:5px;margin-bottom:5px">' : '+'));
-        div.innerHTML = labels_title.join('<p style="text-align:left;font-size:12px;margin-top:5px;margin-bottom:5px">');
-    }
-    return div;
-};
-///////////////////////////////////////////////////////////////////////////////////
-
-
-
-///////////////////////////////////////////////////////////////////////////////////
-// death Tests per thousand
-// death Tests per thousand - Color/Breaks
-function getColor_death_pc(d) {
-    return d > 269 ? '#7a0177' :
-        d > 207 ? '#c51b8a' :
-        d > 151 ? '#f768a1' :
-        d > 64 ? '#fbb4b9' :
-        d > 0 ? '#feebe2' :
-        '#ffffff00';
-}
-
-// death Tests per thousand - Legend
-var legend_death_pc = L.control({
-    position: "bottomright"
-});
-legend_death_pc.onAdd = function(map) {
-
-    var div = L.DomUtil.create('div', 'info legend'),
-        labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Death Rate</h6>'],
-        grades = [999999, 269, 207, 151, 64, 0],
-        labels = ["269 +", "207 - 269", "151 - 207", "64 - 151", "1 - 64", "No deaths/Data"];
-
-    // loop through our density intervals and generate a label with a colored square for each interval
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            labels_title.push(
-                '<i style="background:' + getColor_death_pc(grades[i]) + '"></i>' +
-                (labels[i] ? labels[i] + '<p style="text-align:left;font-size:12px;margin-top:5px;margin-bottom:5px">' : '+'));
-        div.innerHTML = labels_title.join('<p style="text-align:left;font-size:12px;margin-top:5px;margin-bottom:5px">');
-    }
-    return div;
-};
-///////////////////////////////////////////////////////////////////////////////////
-
-
-
-///////////////////////////////////////////////////////////////////////////////////
-// percent tests
-// percent tests - Color/Breaks
-function getColor_percent(d) {
-return d > 16  ? '#045a8d' :
-	   d > 14  ? '#2b8cbe' :
-	   d > 10  ? '#74a9cf' :
-	   d > 5  ? '#bdc9e1' :
-	   d > 0   ? '#f1eef6' :
-				  '#ffffff00';
-}
-
-// percent tests - Legend
-var legend_percent = L.control({ position: "bottomright" });
-legend_percent.onAdd = function (map) {
-
-    var div = L.DomUtil.create('div', 'info legend'),
-		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Percent Positive</h6>'],
-		grades = [999999, 16, 14, 10, 5, 0],
-        labels = ["16 +", "14 - 16", "10 - 14", "5 - 10", "1 - 5", "No Tests/Data"]
-		;
-		
-    // loop through our density intervals and generate a label with a colored square for each interval
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            labels_title.push(
-            '<i style="background:' + getColor_percent(grades[i]) + '"></i> ' +
-            (labels[i] ? labels[i] + '<p style="text-align:left;font-size:12px;margin-top:5px;margin-bottom:5px">' : '+'));
-        div.innerHTML = labels_title.join('<p style="text-align:left;font-size:12px;margin-top:5px;margin-bottom:5px">');
-    }
-    return div;
-};
-///////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////
 // Total tests
 // Total tests - Color/Breaks
 function getColor_total(d) {
-return d > 13915  ? '#045a8d' :
-	   d > 9751  ? '#2b8cbe' :
-	   d > 6350  ? '#74a9cf' :
-	   d > 2287  ? '#bdc9e1' :
+return d > 6127  ? '#045a8d' :
+	   d > 4192  ? '#2b8cbe' :
+	   d > 2799  ? '#74a9cf' :
+	   d > 1095  ? '#bdc9e1' :
 	   d > 0   ? '#f1eef6' :
 				  '#ffffff00';
 }
@@ -228,9 +116,9 @@ var legend_total = L.control({ position: "bottomright" });
 legend_total.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
-		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Total Tests</h6>'],
-		grades = [999999, 13915, 9751, 6350, 2287, 0],
-        labels = ["13915 +", "9751 - 13915", "6350 - 9751", "2287 - 6350", "1 - 2287", "No Tests/Data"]
+		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Total tests</h6>'],
+		grades = [999999, 6127, 4192, 2799, 1095, 0],
+        labels = ["6127 +", "4192 - 6126", "2799 - 4191", "1095 - 2798", "1 - 1094", "No Tests/Data"]
 		;
 		
     // loop through our density intervals and generate a label with a colored square for each interval
@@ -246,6 +134,39 @@ legend_total.onAdd = function (map) {
 ///////////////////////////////////////////////////////////////////////////////////
 
 
+
+///////////////////////////////////////////////////////////////////////////////////
+// Total tests per thousand
+// Total tests per thousand - Color/Breaks
+function getColor_total_pc(d) {
+return d > 108.40  ? '#045a8d' :
+	   d > 94.86  ? '#2b8cbe' :
+	   d > 82.30  ? '#74a9cf' :
+	   d > 68.61  ? '#bdc9e1' :
+	   d > 0 ? '#f1eef6' :
+				  '#ffffff00';
+}
+
+var legend_total_pc = L.control({ position: "bottomright" });
+legend_total_pc.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+		labels_title = ['<h6 style="text-align:center;font-size:12px;font-weight: bold;">Total tests<br>per one thousand</h6>'],
+		grades = [999999, 108.40, 94.86, 82.30, 68.61, 0],
+        labels = ["108.40 +", "94.86 - 108.40", "82.30 - 94.85", "68.61 - 82.29", "1 - 68.60", "No Tests/Data"]
+		;
+		
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            labels_title.push(
+            '<i style="background:' + getColor_total_pc(grades[i]) + '"></i> ' +
+            (labels[i] ? labels[i] + '<p style="text-align:left;font-size:12px;margin-top:5px;margin-bottom:5px">' : '+'));
+        div.innerHTML = labels_title.join('<p style="text-align:left;font-size:12px;margin-top:5px;margin-bottom:5px">');
+    }
+    return div;
+};
+///////////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -480,9 +401,9 @@ legend_sdi.onAdd = function (map) {
       return {
         weight: 1,
         opacity: .25,
-        color: getColor_positive(feature.properties.COVID_CASE_COUNT),
+        color: getColor_positive(feature.properties.Positive),
         fillOpacity: .7,
- 		fillColor: getColor_positive(feature.properties.COVID_CASE_COUNT),
+ 		fillColor: getColor_positive(feature.properties.Positive),
       };
     }
     function highlightFeature_positive(e) {
@@ -538,9 +459,9 @@ return Mustache.render(popupTemplate_positive, layer.feature.properties);
       return {
         weight: 1,
         opacity: .5,
-        color: getColor_positive_pc(feature.properties.COVID_CASE_RATE),
+        color: getColor_positive_pc(feature.properties.positiveperthou),
         fillOpacity: .7,
- 		fillColor: getColor_positive_pc(feature.properties.COVID_CASE_RATE),
+ 		fillColor: getColor_positive_pc(feature.properties.positiveperthou),
       };
     }
    
@@ -585,170 +506,6 @@ return Mustache.render(popupTemplate_positive, layer.feature.properties);
 });	
 ///////////////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////////////////
-// death Tests
-    function style_death(feature) {
-      return {
-        weight: 1,
-        opacity: .25,
-        color: getColor_death(feature.properties.COVID_DEATH_COUNT),
-        fillOpacity: .7,
- 		fillColor: getColor_death(feature.properties.COVID_DEATH_COUNT),
-      };
-    }
-    function highlightFeature_death(e) {
-      var layer = e.target;
-      layer.setStyle({
-        weight: 1,
-        color: "#777",
-        dashArray: "",
-        fillOpacity: 1,
-      });
-	  	vzcta.bringToFront();		
-		////healthcare.bringToFront();
-		
-      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
-      }
-    }
-var death;
-    function resetHighlight_death(e) {
-      death.resetStyle(e.target);
-	  
-	  
-    }
-
-    function onEachFeature_death(feature, layer) {
-      layer.on({
-        mouseover: highlightFeature_death,
-        mouseout: resetHighlight_death
-      });
-    }
-
-    death = L.geoJson(covid_nyc, {
-      style: style_death,
-      onEachFeature: onEachFeature_death
-
-    });
-// Add popups to the layer
-death.bindPopup(function (layer) {
-// This function is called whenever a feature on the layer is clicked
-console.log(layer.feature.properties);
-
-// Render the template with all of the properties. Mustache ignores properties
-// that aren't used in the template, so this is fine.
-return Mustache.render(popupTemplate_death, layer.feature.properties);
-});	
-///////////////////////////////////////////////////////////////////////////////////
-
-
-
-///////////////////////////////////////////////////////////////////////////////////
-// Positive Tests per thousand
-    function style_death_pc(feature) {
-      return {
-        weight: 1,
-        opacity: .5,
-        color: getColor_death_pc(feature.properties.COVID_DEATH_RATE),
-        fillOpacity: .7,
- 		fillColor: getColor_death_pc(feature.properties.COVID_DEATH_RATE),
-      };
-    }
-   
-    function highlightFeature_death_pc(e) {
-      var layer = e.target;
-      layer.setStyle({
-        weight: 1,
-        color: "#777",
-        dashArray: "",
-        fillOpacity: 1
-      });
-	  	  	vzcta.bringToFront();		
-      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
-      }
-    }
-var death_pc;
-    function resetHighlight_death_pc(e) {
-      death_pc.resetStyle(e.target);
-    }
-
-    function onEachFeature_death_pc(feature, layer) {
-      layer.on({
-        mouseover: highlightFeature_death_pc,
-        mouseout: resetHighlight_death_pc
-      });
-    }
-
-    death_pc = L.geoJson(covid_nyc, {
-      style: style_death_pc,
-      onEachFeature: onEachFeature_death_pc
-
-    });
-// Add popups to the layer
-death_pc.bindPopup(function (layer) {
-// This function is called whenever a feature on the layer is clicked
-console.log(layer.feature.properties);
-
-// Render the template with all of the properties. Mustache ignores properties
-// that aren't used in the template, so this is fine.
-return Mustache.render(popupTemplate_positive, layer.feature.properties);
-});	
-///////////////////////////////////////////////////////////////////////////////////
-
-
-
-///////////////////////////////////////////////////////////////////////////////////
-// Percent
-    function style_percent(feature) {
-      return {
-        weight: 1,
-        opacity: .25,
-        color: getColor_percent(feature.properties.PERCENT_POSITIVE),
-        fillOpacity: .7,
- 		fillColor: getColor_percent(feature.properties.PERCENT_POSITIVE),
-      };
-    }
-   
-    function highlightFeature_percent(e) {
-      var layer = e.target;
-      layer.setStyle({
-        weight: 1,
-        color: "#777",
-        dashArray: "",
-        fillOpacity: 1
-      });
-	  	  	vzcta.bringToFront();		
-      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
-      }
-    }
-var percent_pc;
-    function resetHighlight_percent(e) {
-      percent_pc.resetStyle(e.target);
-    }
-
-    function onEachFeature_percent(feature, layer) {
-      layer.on({
-        mouseover: highlightFeature_percent,
-        mouseout: resetHighlight_percent
-      });
-    }
-    percent_pc = L.geoJson(covid_nyc, {
-      style: style_percent,
-      onEachFeature: onEachFeature_percent
-    });
-// Add popups to the layer
-percent_pc.bindPopup(function (layer) {
-// This function is called whenever a feature on the layer is clicked
-console.log(layer.feature.properties);
-
-// Render the template with all of the properties. Mustache ignores properties
-// that aren't used in the template, so this is fine.
-return Mustache.render(popupTemplate_positive, layer.feature.properties);
-});	
-///////////////////////////////////////////////////////////////////////////////////
-
 
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -757,9 +514,9 @@ return Mustache.render(popupTemplate_positive, layer.feature.properties);
       return {
         weight: 1,
         opacity: .25,
-        color: getColor_total(feature.properties.TOTAL_COVID_TESTS),
+        color: getColor_total(feature.properties.Total),
         fillOpacity: .7,
- 		fillColor: getColor_total(feature.properties.TOTAL_COVID_TESTS),
+ 		fillColor: getColor_total(feature.properties.Total),
       };
     }
    
@@ -802,6 +559,58 @@ return Mustache.render(popupTemplate_positive, layer.feature.properties);
 });	
 ///////////////////////////////////////////////////////////////////////////////////
 
+
+
+///////////////////////////////////////////////////////////////////////////////////
+// Total per thousand
+    function style_total_pc(feature) {
+      return {
+        weight: 1,
+        opacity: .25,
+        color: getColor_total_pc(feature.properties.totalperthou),
+        fillOpacity: .7,
+ 		fillColor: getColor_total_pc(feature.properties.totalperthou),
+      };
+    }
+   
+    function highlightFeature_total_pc(e) {
+      var layer = e.target;
+      layer.setStyle({
+        weight: 1,
+        color: "#777",
+        dashArray: "",
+        fillOpacity: 1
+      });
+	  	  	vzcta.bringToFront();		
+      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+      }
+    }
+var total_pc;
+    function resetHighlight_total_pc(e) {
+      total_pc.resetStyle(e.target);
+    }
+
+    function onEachFeature_total_pc(feature, layer) {
+      layer.on({
+        mouseover: highlightFeature_total_pc,
+        mouseout: resetHighlight_total_pc
+      });
+    }
+    total_pc = L.geoJson(covid_nyc, {
+      style: style_total_pc,
+      onEachFeature: onEachFeature_total_pc
+    });
+// Add popups to the layer
+total_pc.bindPopup(function (layer) {
+// This function is called whenever a feature on the layer is clicked
+console.log(layer.feature.properties);
+
+// Render the template with all of the properties. Mustache ignores properties
+// that aren't used in the template, so this is fine.
+return Mustache.render(popupTemplate_positive, layer.feature.properties);
+});	
+///////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -1287,14 +1096,14 @@ legend_positive.addTo(map);
 currentLegend = legend_positive;
 
 map.on('baselayerchange', function (eventLayer) {
-    if (eventLayer.name === 'Cases') {
+    if (eventLayer.name === 'Positive cases') {
         map.removeControl(currentLegend );
         currentLegend = legend_positive;
         legend_positive.addTo(map);
 		////healthcare.bringToFront();		
 		vzcta.bringToFront();
     }
-    else if  (eventLayer.name === 'Case Rate') {
+    else if  (eventLayer.name === 'Positive cases per one thousand') {
         map.removeControl(currentLegend );
         currentLegend = legend_positive_pc;
         legend_positive_pc.addTo(map);
@@ -1302,34 +1111,19 @@ map.on('baselayerchange', function (eventLayer) {
 		vzcta.bringToFront();
 
     }
-    else if  (eventLayer.name === 'Deaths') {
-        map.removeControl(currentLegend );
-        currentLegend = legend_death;
-        legend_death.addTo(map);
-		////healthcare.bringToFront();		
-		vzcta.bringToFront();
-
-    }
-    else if  (eventLayer.name === 'Death Rate') {
-        map.removeControl(currentLegend );
-        currentLegend = legend_death_pc;
-        legend_death_pc.addTo(map);
-		////healthcare.bringToFront();		
-		vzcta.bringToFront();
-    }
-    else if  (eventLayer.name === 'Percent Positive') {
-       map.removeControl(currentLegend );
-        currentLegend = legend_percent;
-        legend_percent.addTo(map);
-		////healthcare.bringToFront();	
-		vzcta.bringToFront();		
-    }
-    else if  (eventLayer.name === "Total Tests<br><br><b>CDC Social Vulnerability Index (<a href='https://svi.cdc.gov/index.html' target=_blank>?</a>)</b>") {
+    else if  (eventLayer.name === 'Total tests') {
        map.removeControl(currentLegend );
         currentLegend = legend_total;
         legend_total.addTo(map);
 		////healthcare.bringToFront();	
 		vzcta.bringToFront();		
+    }
+    else if  (eventLayer.name === "Total tests per one thousand<br><br><b>CDC Social Vulnerability Index (<a href='https://svi.cdc.gov/index.html' target=_blank>?</a>)</b>") {
+       map.removeControl(currentLegend );
+        currentLegend = legend_total_pc;
+        legend_total_pc.addTo(map);
+		////healthcare.bringToFront();		
+		vzcta.bringToFront();
     }
     else if  (eventLayer.name === 'Overall Vulnerability') {
        map.removeControl(currentLegend );
@@ -1380,12 +1174,10 @@ map.on('baselayerchange', function (eventLayer) {
 
 // Assign layers
 var underlays = {
-    "Cases": positive,
-    "Case Rate": positive_pc,
-    "Deaths": death,
-    "Death Rate": death_pc,	
-    "Percent Positive": percent_pc,	
-    "Total Tests<br><br><b>CDC Social Vulnerability Index (<a href='https://svi.cdc.gov/index.html' target=_blank>?</a>)</b>": total,
+    "Positive cases": positive,
+    "Positive cases per one thousand": positive_pc,
+    "Total tests": total,
+    "Total tests per one thousand<br><br><b>CDC Social Vulnerability Index (<a href='https://svi.cdc.gov/index.html' target=_blank>?</a>)</b>": total_pc,
     //	"Social Deprivation Index (<a href='https://www.graham-center.org/rgc/maps-data-tools/sdi/social-deprivation-index.html' target=_blank>?</a>)": sdi,
     "Overall Vulnerability": SVI2018_overall,
     "Socioeconomic Vulnerability": SVI2018_theme1,
