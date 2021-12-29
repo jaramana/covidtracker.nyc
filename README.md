@@ -5,7 +5,7 @@ covidtracker.nyc tracks tests for the corona virus disease (COVID-19) in New Yor
 
 As of 11/15/2020, covidtracker.nyc is no longer supported.
 
-## Archived Live Demo
+## Archived Demo
 https://ahmadshaibani.com/public_assets/covidtracker.nyc/
 
 ## License
